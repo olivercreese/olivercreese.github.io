@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uncharted Rally | Oliver Creese</title>
+  <meta name="description" content="Uncharted Rally — a procedurally generated rally game built in Unreal Engine by Oliver Creese." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="../index.html">OLIVER CREESE</a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="../index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="../index.html#projects">Portfolio &#9662;</a>
+          <ul class="dropdown-menu">
+            <li><a href="uncharted-rally.html">Uncharted Rally</a></li>
+            <li><a href="spitting-fax.html">Spitting Fax</a></li>
+            <li><a href="knights-resurrection.html">Knights Resurrection</a></li>
+            <li><a href="echoes-of-salvation.html">Echoes Of Salvation</a></li>
+          </ul>
+        </li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Unreal Engine &middot; Solo Developer</p>
+        <h1>Uncharted Rally</h1>
+        <p class="subtitle">
+          A procedurally generated rally game — my final year dissertation project at
+          Kingston University, built on the Unreal Engine framework to create a
+          unique rally gaming experience.
+        </p>
+
+        <img class="project-hero-img" src="../assets/images/uncharted-rally-road.jpg"
+             alt="A procedurally generated dirt road winding through a forest in Uncharted Rally" />
+
+        <div class="meta-grid">
+          <div class="meta-item">
+            <span class="meta-label">Role</span>
+            <span class="meta-value">Solo Developer (Dissertation)</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Engine</span>
+            <span class="meta-value">Unreal Engine</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Platform</span>
+            <span class="meta-value">Windows</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Controls</span>
+            <span class="meta-value">Controller &amp; Keyboard</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Status</span>
+            <span class="meta-value">In Development</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Core Features</h2>
+        <p class="section-intro">The technical systems that drive each generated stage.</p>
+        <ul class="feature-list">
+          <li>Procedural terrain system using a custom chunking algorithm</li>
+          <li>Dynamic texturing using virtual textures and auto-materials</li>
+          <li>Advanced AI logic with programmable difficulty</li>
+          <li>PCG setup for foliage and track pathfinding</li>
+          <li>Mesh deformation algorithm for terrain deformation around the track</li>
+          <li>Customisable vehicle setup using Chaos Vehicle</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="container split">
+        <div>
+          <h3>Design</h3>
+          <p>
+            The project aims to capture photorealism and use Unreal Engine's powerful
+            real-time rendering capabilities. Each stage hands the player a new set of
+            parameters, so vehicle setup decisions matter as much as driving skill.
+          </p>
+          <p>
+            Inspired by <strong>DiRT Rally</strong> and <strong>Art of Rally</strong>.
+            Targeting Windows, with potential to explore consoles later.
+          </p>
+        </div>
+        <div>
+          <h3>Development Challenges</h3>
+          <p>
+            Mesh deformation initially caused performance problems, which I solved by
+            applying the same chunking method used for terrain generation.
+          </p>
+          <p>
+            Implementing virtual textures on procedural geometry was another hurdle —
+            the solution was converting the procedural meshes to static meshes so they
+            could be baked and blended correctly.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Gameplay Loop</h2>
+        <ol class="loop-steps">
+          <li>Stage parameters are generated and shown to the player</li>
+          <li>Player customises their car to suit the stage</li>
+          <li>Player races against the AI opponent</li>
+          <li>Win to advance to the next stage — fail and restart</li>
+        </ol>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Gallery</h2>
+        <div class="carousel">
+          <div class="carousel-track">
+            <!-- To add an image: copy a screenshot into assets/images,
+                 then add one line here like the ones below.
+                 The alt text describes the image for screen readers and search engines. -->
+            <img src="../assets/images/uncharted-rally-terrain.jpg" alt="Aerial view of procedurally generated terrain with trees and hills" />
+            <img src="../assets/images/uncharted-rally-road.jpg" alt="Dirt track winding through procedurally placed forest" />
+          </div>
+          <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
+          <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
+          <div class="carousel-dots"></div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top: 0;">
+      <div class="container">
+        <h2 class="section-title">Dev Blog</h2>
+        <p class="section-intro">
+          I write regular dev logs about Uncharted Rally —
+          <a href="../blog.html">read them on the blog page</a>.
+        </p>
+      </div>
+    </section>
+
+    <div class="container project-nav">
+      <a class="btn btn-ghost" href="../index.html#projects">&larr; All projects</a>
+      <a class="btn btn-ghost" href="spitting-fax.html">Next: Spitting Fax &rarr;</a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year">2026</span> Oliver Creese. Built by hand with HTML &amp; CSS.</p>
+      <div class="footer-links">
+        <a href="https://github.com/olivercreese" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://uk.linkedin.com/in/oliver-creese-88675a2ab" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:olicreese@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Knights Resurrection | Oliver Creese</title>
+  <meta name="description" content="Knights Resurrection — an open world fantasy RPG with a unique match-the-input combat system, built in Unreal Engine." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="../index.html">OLIVER CREESE</a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="../index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="../index.html#projects">Portfolio &#9662;</a>
+          <ul class="dropdown-menu">
+            <li><a href="uncharted-rally.html">Uncharted Rally</a></li>
+            <li><a href="spitting-fax.html">Spitting Fax</a></li>
+            <li><a href="knights-resurrection.html">Knights Resurrection</a></li>
+            <li><a href="echoes-of-salvation.html">Echoes Of Salvation</a></li>
+          </ul>
+        </li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Unreal Engine &middot; Combat Designer &amp; Gameplay Programmer</p>
+        <h1>Knights Resurrection</h1>
+        <p class="subtitle">
+          An open world fantasy RPG where you play as Iraemyr, a farmer enlisted to
+          fight for the last free kingdom against a corrupt prince who bends the world
+          to his will with dark magic. My teammate and I built it in two months for
+          our Game Design module — a full narrative experience with a three-act story
+          and a unique combat system.
+        </p>
+
+        <img class="project-hero-img" src="../assets/images/knights-hero.jpg"
+             alt="Iraemyr reaching for a sword planted in a grassy field" />
+
+        <div class="meta-grid">
+          <div class="meta-item">
+            <span class="meta-label">Role</span>
+            <span class="meta-value">Combat Designer &amp; Gameplay Programmer</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Engine</span>
+            <span class="meta-value">Unreal Engine</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Platform</span>
+            <span class="meta-value">Windows</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Controls</span>
+            <span class="meta-value">Keyboard</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Status</span>
+            <span class="meta-value">Planned Steam Release</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Main Features</h2>
+        <p class="section-intro">A complete RPG systems stack, built in two months.</p>
+        <ul class="feature-list">
+          <li>Match-the-input combat system with unique weapon combos</li>
+          <li>Three-tier weapon rarities</li>
+          <li>'Rage Mode' ability</li>
+          <li>Open world with foliage biomes</li>
+          <li>Dynamic music that changes across areas of the map</li>
+          <li>Three enemy types with advanced AI using a token system and the Environment Query System</li>
+          <li>Inventory system</li>
+          <li>Resources and upgrade materials</li>
+          <li>Quest system</li>
+          <li>Blacksmith weapon upgrades</li>
+          <li>NPCs with side quests and rewards</li>
+          <li>Procedural roads</li>
+          <li>Full HUD with minimap and compass</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="container split">
+        <div>
+          <h3>Design</h3>
+          <p>
+            The game is set in a fantasy medieval world inspired by real and fictional
+            castle architecture, spread across three kingdoms. It uses high-fidelity
+            assets and realistic damage effects to ground the fantasy.
+          </p>
+          <p>
+            Inspired by the <strong>Elder Scrolls</strong> series and
+            <strong>Kingdom Come: Deliverance</strong>. Keyboard-only by design — the
+            match-the-input combat is built around it — and targeting Windows due to
+            the need for a powerful graphics card.
+          </p>
+        </div>
+        <div>
+          <h3>Development Challenges</h3>
+          <p>
+            Keeping an open world performant was the biggest challenge: we used PCG to
+            optimise world building and solved foliage rendering costs with dedicated
+            rendering techniques.
+          </p>
+          <p>
+            We also integrated MetaHumans for characters, which meant building an
+            animation retargeting approach so our combat and locomotion animations
+            worked across every character rig.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Gameplay Loop</h2>
+        <ol class="loop-steps">
+          <li>Start the main quest</li>
+          <li>Defeat enemies and complete the quest</li>
+          <li>Collect rewards and gather resources</li>
+          <li>Receive the next quest and explore the world</li>
+          <li>Do side quests and upgrade your weapons</li>
+        </ol>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Gallery</h2>
+        <div class="carousel">
+          <div class="carousel-track">
+            <!-- To add an image: copy a screenshot into assets/images,
+                 then add one line here like the ones below.
+                 The alt text describes the image for screen readers and search engines. -->
+            <img src="../assets/images/knights-castle.jpg" alt="Throne room dialogue with the King's Advisor" />
+            <img src="../assets/images/knights-village.jpg" alt="Blacksmith working in a village, with minimap and compass HUD" />
+            <img src="../assets/images/knights-field.jpg" alt="Enemies standing in a flowered field outside a fortress wall" />
+            <img src="../assets/images/knights-hero.jpg" alt="Iraemyr reaching for a sword planted in a grassy field" />
+          </div>
+          <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
+          <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
+          <div class="carousel-dots"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container project-nav">
+      <a class="btn btn-ghost" href="spitting-fax.html">&larr; Prev: Spitting Fax</a>
+      <a class="btn btn-ghost" href="echoes-of-salvation.html">Next: Echoes Of Salvation &rarr;</a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year">2026</span> Oliver Creese. Built by hand with HTML &amp; CSS.</p>
+      <div class="footer-links">
+        <a href="https://github.com/olivercreese" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://uk.linkedin.com/in/oliver-creese-88675a2ab" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:olicreese@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

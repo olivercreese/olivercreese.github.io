@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:olicreese6.wixsite.com)",
+      "PowerShell(Remove-Item *)",
+      "PowerShell(New-Item *)",
+      "PowerShell($html = Get-Content \"E:\\\\PorfolioSite\\\\_scrape\\\\post7.html\" -Raw; $i = $html.IndexOf\\('tone mapper'\\); Write-Output \"first 'tone mapper' at: $i\"; if \\($i -gt 0\\) { $start=[Math]::Max\\(0,$i-3000\\); Write-Output $html.Substring\\($start, 4000\\) })",
+      "PowerShell($edge = \"${env:ProgramFiles\\(x86\\)}\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\"; & $edge --headless --disable-gpu --screenshot=\"E:\\\\PorfolioSite\\\\_shot-served.png\" --window-size=1366,2400 --virtual-time-budget=10000 \"http://localhost:8741/blog/uncharted-rally-007.html\"; Start-Sleep -Seconds 2; Test-Path E:\\\\PorfolioSite\\\\_shot-served.png)",
+      "PowerShell(\\(Invoke-WebRequest -Uri \"http://localhost:8741/blog/uncharted-rally-007.html\" -UseBasicParsing\\).StatusCode; $edge = \"${env:ProgramFiles\\(x86\\)}\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\"; & $edge --headless --disable-gpu --screenshot=\"E:\\\\PorfolioSite\\\\_shot-served.png\" --window-size=1366,2400 --virtual-time-budget=10000 \"http://localhost:8741/blog/uncharted-rally-007.html\"; Start-Sleep -Seconds 3; Test-Path E:\\\\PorfolioSite\\\\_shot-served.png)",
+      "PowerShell(cmd /c python --version)",
+      "PowerShell(Invoke-WebRequest -Uri \"https://olicreese6.wixsite.com/oliver-creese\" -UseBasicParsing -OutFile \"E:\\\\PorfolioSite\\\\_home.html\"; $html = Get-Content \"E:\\\\PorfolioSite\\\\_home.html\" -Raw; Write-Output \"length: $\\($html.Length\\)\"; foreach \\($kw in 'Unreal','Unity','C\\\\+\\\\+','OpenGL','Maya','Git'\\) { $ms = [regex]::Matches\\($html, $kw\\); Write-Output \"$kw : $\\($ms.Count\\) matches at $\\(@\\($ms | Select-Object -First 8 | ForEach-Object {$_.Index}\\) -join ', '\\)\" })",
+      "PowerShell($files = [ordered]@{ 'unreal'='ac2f11_f4f64ac08decae2f60108207cf7555d3_208'; 'unity'='ac2f11_e889bca9761255cc21189df1456f3a69_208' }; foreach \\($k in $files.Keys\\) { foreach \\($pattern in @\\(\"https://static.wixstatic.com/sites/$\\($files[$k]\\).z?v=3\", \"https://static.wixstatic.com/sites/$\\($files[$k]\\).json.z?v=3\"\\)\\) { try { $r = Invoke-WebRequest -Uri $pattern -UseBasicParsing -ErrorAction Stop; Write-Output \"$k OK \\($pattern\\) length=$\\($r.Content.Length\\)\" ; break } catch { Write-Output \"$k FAIL $pattern : $\\($_.Exception.Message\\)\" } } })",
+      "PowerShell(git *)"
+    ]
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true
+  }
+}

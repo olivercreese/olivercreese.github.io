@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dev Log #0004 — Uncharted Rally... 2? | Oliver Creese</title>
+  <meta name="description" content="Dev log #0004 for Uncharted Rally: rewriting chunk generation in C++ and building the first autonomous AI driver." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="../index.html">OLIVER CREESE</a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="../index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="../index.html#projects">Portfolio &#9662;</a>
+          <ul class="dropdown-menu">
+            <li><a href="../projects/uncharted-rally.html">Uncharted Rally</a></li>
+            <li><a href="../projects/spitting-fax.html">Spitting Fax</a></li>
+            <li><a href="../projects/knights-resurrection.html">Knights Resurrection</a></li>
+            <li><a href="../projects/echoes-of-salvation.html">Echoes Of Salvation</a></li>
+          </ul>
+        </li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero post-hero" data-num="0004">
+      <div class="container">
+        <p class="eyebrow">Dev Log &middot; Uncharted Rally</p>
+        <h1>Dev Log #0004 — Uncharted Rally&hellip; 2?</h1>
+        <p class="post-info">11 February 2026 <span class="sep">/</span> 2 min read <span class="sep">/</span> Oliver Creese</p>
+      </div>
+    </section>
+
+    <article class="post-body container">
+      <p class="post-lead">
+        I have completely rewritten my chunk generation in C++ and made some
+        optimisation gains, as well as opening pathways for a better regeneration.
+        I will continue to refine it as I go. I have made big progress in making
+        autonomous drivers and have created an AI driver that can throttle and steer
+        along a spline.
+      </p>
+
+      <hr class="post-divider" />
+
+      <h2>C++ Rewrite</h2>
+      <p>
+        My main reason for doing this was to dive into some C++ and to apply its
+        powerful capabilities to a task that would actually be able to utilise it.
+        Since all my logic was already in Blueprint, most of it was just translation
+        — however, I made optimisation gains since now I am able to manage memory. I
+        have replaced my original "generate all chunks right at this very moment on
+        the game thread" with a slower but more economical approach. Essentially I
+        am storing all the chunk positions in a queue and then gradually generating
+        them through a timer. This way I don't hog the game thread and other
+        processes can still execute. I have also stored all chunks inside an array
+        of pointers, so that when I need to regenerate I can do a similar process.
+      </p>
+
+      <h2>AI Drivers</h2>
+      <p>
+        I have created a simple AI driver that maintains throttle and steers its way
+        onto a spline path. It is steering by using traditional calculation of
+        finding the angle between the closest spline point and the car's forward
+        vector, then mapping that to the steering input. Through some helpful
+        Blueprint nodes which return the closest position on a spline at a given
+        distance, I then just need to find the delta angle between the car's forward
+        vector and the vector from the front of the car to the point on the spline.
+      </p>
+
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/nZiKq3KlF9U"
+                title="Uncharted Rally dev log #0004 video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+      </div>
+
+      <h2>What's Next?</h2>
+      <p>
+        My next task is to bake the chunks into a single static mesh. Since I have
+        switched to C++ this will be much easier.
+      </p>
+    </article>
+
+    <div class="container project-nav">
+      <a class="btn btn-ghost" href="uncharted-rally-devlog-0005.html">&larr; Newer: DevLog #0005</a>
+      <a class="btn btn-ghost" href="../blog.html">All posts &rarr;</a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year">2026</span> Oliver Creese. Built by hand with HTML &amp; CSS.</p>
+      <div class="footer-links">
+        <a href="https://github.com/olivercreese" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://uk.linkedin.com/in/oliver-creese-88675a2ab" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:olicreese@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

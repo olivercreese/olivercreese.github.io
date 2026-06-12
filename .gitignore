@@ -1,0 +1,5 @@
+# temporary files Claude creates while testing — never publish these
+_shot-*.png
+_test.html
+_scrape/
+_home.html

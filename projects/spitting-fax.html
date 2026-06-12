@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spitting Fax | Oliver Creese</title>
+  <meta name="description" content="Spitting Fax — a physics-based multiplayer party game about making and rating presentations, built in Unity by Oliver Creese." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="../index.html">OLIVER CREESE</a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="../index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="../index.html#projects">Portfolio &#9662;</a>
+          <ul class="dropdown-menu">
+            <li><a href="uncharted-rally.html">Uncharted Rally</a></li>
+            <li><a href="spitting-fax.html">Spitting Fax</a></li>
+            <li><a href="knights-resurrection.html">Knights Resurrection</a></li>
+            <li><a href="echoes-of-salvation.html">Echoes Of Salvation</a></li>
+          </ul>
+        </li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Unity &middot; Physics &amp; Gameplay Programmer</p>
+        <h1>Spitting Fax</h1>
+        <p class="subtitle">
+          A chaotic multiplayer party game where players battle it out on stage,
+          delivering ridiculous presentations built from each other's prompts.
+          Survive the crowd — who judge you by pelting you with tomatoes or
+          showering you with cash. Created during my multiplayer module at
+          Kingston University.
+        </p>
+
+        <img class="project-hero-img" src="../assets/images/spitting-fax-cover.jpg"
+             alt="Spitting Fax title art with a pie chart logo and a flying tomato" />
+
+        <div class="meta-grid">
+          <div class="meta-item">
+            <span class="meta-label">Role</span>
+            <span class="meta-value">Physics &amp; Gameplay Programmer</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Engine</span>
+            <span class="meta-value">Unity</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Platform</span>
+            <span class="meta-value">Windows</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Controls</span>
+            <span class="meta-value">Keyboard</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Status</span>
+            <span class="meta-value">Planned Steam Release</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Main Features</h2>
+        <p class="section-intro">Everything is multiplayer-first and fully replicated.</p>
+        <ul class="feature-list">
+          <li>Active-to-passive ragdoll system that is fully replicated</li>
+          <li>Replicated physics-based projectiles</li>
+          <li>Multiplayer lobby system using Unity sessions</li>
+          <li>Replicated presentation slides that are captured and displayed</li>
+          <li>Presentation scoring system</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="container split">
+        <div>
+          <h3>Design</h3>
+          <p>
+            The game uses a minimalistic, childish UI design, giving it a light-hearted
+            feel. Customise your slides with memes and hand-drawn chaos, then perform —
+            ragdoll physics ensures every presentation ends in glory or disaster.
+          </p>
+          <p>
+            Inspired by <strong>Fall Guys</strong> and <strong>Gartic Phone</strong>.
+          </p>
+        </div>
+        <div>
+          <h3>Development Challenges</h3>
+          <p>
+            Replicating the active ragdoll was the hardest problem: it needed to be
+            server-authoritative without sending excessive amounts of physics data
+            over the network.
+          </p>
+          <p>
+            The solution was a minimalistic ragdoll approach driven from the root
+            bone, keeping the simulation believable while staying cheap to replicate.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Gameplay Loop</h2>
+        <ol class="loop-steps">
+          <li>Host or join a lobby with friends</li>
+          <li>Pick a theme and colour scheme</li>
+          <li>Create presentations from each other's prompts</li>
+          <li>Present while staying on stage — the audience reacts and pushes</li>
+          <li>Receive your scores</li>
+        </ol>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Gallery</h2>
+        <div class="carousel">
+          <div class="carousel-track">
+            <!-- To add an image: copy a screenshot into assets/images,
+                 then add one line here like the ones below.
+                 The alt text describes the image for screen readers and search engines. -->
+            <img src="../assets/images/spitting-fax-lobby.jpg" alt="Spitting Fax multiplayer lobby with host, join and ready options" />
+            <img src="../assets/images/spitting-fax-editor.jpg" alt="Spitting Fax slide editor showing a presentation being created against a timer" />
+            <img src="../assets/images/spitting-fax-cover.jpg" alt="Spitting Fax title art with a pie chart logo and a flying tomato" />
+          </div>
+          <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
+          <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
+          <div class="carousel-dots"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container project-nav">
+      <a class="btn btn-ghost" href="uncharted-rally.html">&larr; Prev: Uncharted Rally</a>
+      <a class="btn btn-ghost" href="knights-resurrection.html">Next: Knights Resurrection &rarr;</a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year">2026</span> Oliver Creese. Built by hand with HTML &amp; CSS.</p>
+      <div class="footer-links">
+        <a href="https://github.com/olivercreese" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://uk.linkedin.com/in/oliver-creese-88675a2ab" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:olicreese@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

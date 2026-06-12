@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uncharted Rally #007 | Oliver Creese</title>
+  <meta name="description" content="Dev log #007 for Uncharted Rally: AI overtaking and obstacle avoidance, a dynamic weather system, and switching to the AGX tone mapper." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="../index.html">OLIVER CREESE</a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="../index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="../index.html#projects">Portfolio &#9662;</a>
+          <ul class="dropdown-menu">
+            <li><a href="../projects/uncharted-rally.html">Uncharted Rally</a></li>
+            <li><a href="../projects/spitting-fax.html">Spitting Fax</a></li>
+            <li><a href="../projects/knights-resurrection.html">Knights Resurrection</a></li>
+            <li><a href="../projects/echoes-of-salvation.html">Echoes Of Salvation</a></li>
+          </ul>
+        </li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero post-hero" data-num="007">
+      <div class="container">
+        <p class="eyebrow">Dev Log &middot; Uncharted Rally</p>
+        <h1>Uncharted Rally #007</h1>
+        <p class="post-info">15 April 2026 <span class="sep">/</span> 1 min read <span class="sep">/</span> Oliver Creese</p>
+      </div>
+    </section>
+
+    <article class="post-body container">
+      <p class="post-lead">
+        AI overtaking and obstacle avoidance logic, a weather system and changing
+        the tone mapper. Oh boy.
+      </p>
+
+      <hr class="post-divider" />
+
+      <h2>Advanced AI</h2>
+      <p>
+        Previously the AI drivers had no knowledge of other vehicles on the track —
+        they would just try to follow the track spline the best they could. Now
+        there is a lane system on the track that allows the AI to switch between
+        lanes to avoid obstacles and also to try to overtake the player. It works by
+        simply adding specific values to the left or right of the given spline
+        position at distance x, and then using a collision box around the AI to
+        detect when cars are near it so it can overtake when it is safe to do so.
+      </p>
+
+      <h2>Weather System</h2>
+      <p>
+        I have built a weather system using dynamic material instances and timelines
+        that change the weather in real time. I also made a rain particle system
+        that works with the terrain material to create puddles on the floor. With
+        Unreal's new vegetation system I can also dynamically adjust wind speed on
+        the foliage to create realistic stormy conditions.
+      </p>
+
+      <h2>Tone Mapper</h2>
+      <p>
+        Unreal's default tone mapper, ACES Filmic, is known for its high fidelity
+        for film production, however it is synonymous in games for creating the
+        'Unreal Engine look'. To combat this I have swapped it for AGX tone mapping,
+        which gives a noticeably bolder look and gives the game a more unique feel.
+      </p>
+
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/9nWTlJnr_n4"
+                title="Uncharted Rally dev log #007 video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+      </div>
+    </article>
+
+    <div class="container project-nav">
+      <a class="btn btn-ghost" href="../blog.html">&larr; All posts</a>
+      <a class="btn btn-ghost" href="uncharted-rally-0006.html">Older: Uncharted Rally #0006 &rarr;</a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year">2026</span> Oliver Creese. Built by hand with HTML &amp; CSS.</p>
+      <div class="footer-links">
+        <a href="https://github.com/olivercreese" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://uk.linkedin.com/in/oliver-creese-88675a2ab" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:olicreese@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uncharted Rally #0006 | Oliver Creese</title>
+  <meta name="description" content="Dev log #0006 for Uncharted Rally: custom Chaos vehicle pawn, car customisation, and Unreal 5.7's procedural vegetation tools." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="../index.html">OLIVER CREESE</a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="../index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="../index.html#projects">Portfolio &#9662;</a>
+          <ul class="dropdown-menu">
+            <li><a href="../projects/uncharted-rally.html">Uncharted Rally</a></li>
+            <li><a href="../projects/spitting-fax.html">Spitting Fax</a></li>
+            <li><a href="../projects/knights-resurrection.html">Knights Resurrection</a></li>
+            <li><a href="../projects/echoes-of-salvation.html">Echoes Of Salvation</a></li>
+          </ul>
+        </li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero post-hero" data-num="0006">
+      <div class="container">
+        <p class="eyebrow">Dev Log &middot; Uncharted Rally</p>
+        <h1>Uncharted Rally #0006</h1>
+        <p class="post-info">16 March 2026 <span class="sep">/</span> 2 min read <span class="sep">/</span> Oliver Creese</p>
+      </div>
+    </section>
+
+    <article class="post-body container">
+      <p class="post-lead">
+        Custom Chaos vehicle setup, car customisation, using Unreal 5.7's new
+        procedural tools for vegetation, and setting up physical materials alongside
+        Chaos vehicle for realistic driving physics.
+      </p>
+
+      <hr class="post-divider" />
+
+      <h2>Custom Chaos Vehicle Pawn</h2>
+      <p>
+        I created my own setup for a car using the Chaos wheeled vehicle component
+        that works with controller. It has a dynamic camera setup so that it will
+        naturally interpolate the camera back to its relative position when the
+        vehicle is in motion. When stopped, the player can look around the car
+        freely. The vehicle can be controlled by keyboard or controller. I set up
+        some base values and did a lot of testing on the torque curves and other
+        engine modifications to find something that resembled a rally car. The pawn
+        inherits from a C++ parent class I made that exposes some of the component
+        class attributes that aren't available in Blueprint for the car
+        customisation.
+      </p>
+
+      <h2>Car Customisation</h2>
+      <p>
+        The player can freely customise their car to meet their needs. There are
+        several options for customisation: suspension stiffness, tyre compound,
+        drivetrain, chassis and skin. This allows the player to change their car
+        setup to meet the needs of the conditions, terrain and level of gravity. The
+        parent Chaos vehicle pawn class accesses the wheel components to change
+        attributes such as friction and suspension spring rate to affect the
+        handling. Each tyre compound has a lateral slip graph associated with it
+        that drastically changes how the car handles when taking corners.
+      </p>
+      <p>
+        Alongside the vehicle's physics setup, I am additionally using physical
+        materials to change how the cars drive on different surfaces. On the track,
+        the spline mesh that serves to texture the terrain through the RVT is also
+        being used to provide a collision surface along the track for the correct
+        friction properties for the surface.
+      </p>
+
+      <h2>Unreal 5.7 Features</h2>
+      <p>
+        I am using the procedural vegetation editor alongside the new Nanite foliage
+        system housed for Quixel's Megaplants assets to create my own custom foliage
+        that is more performant. The PVE allows you to adjust things like how much
+        gravity affects the plant's structure, trunk and branch size, as well as
+        being able to change the leaves and amount of leaves. This system creates a
+        skeletal mesh which pairs with the new wind system that is much more
+        performance friendly. The assets also use the new Nanite foliage
+        voxelisation, which further reduces quad overdraw by rendering the asset
+        with voxels that are easier to compute and look better at a distance.
+      </p>
+    </article>
+
+    <div class="container project-nav">
+      <a class="btn btn-ghost" href="uncharted-rally-007.html">&larr; Newer: Uncharted Rally #007</a>
+      <a class="btn btn-ghost" href="uncharted-rally-devlog-0005.html">Older: DevLog #0005 &rarr;</a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year">2026</span> Oliver Creese. Built by hand with HTML &amp; CSS.</p>
+      <div class="footer-links">
+        <a href="https://github.com/olivercreese" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://uk.linkedin.com/in/oliver-creese-88675a2ab" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:olicreese@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

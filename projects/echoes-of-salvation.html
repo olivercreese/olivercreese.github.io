@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Echoes Of Salvation | Oliver Creese</title>
+  <meta name="description" content="Echoes Of Salvation — a first person arena shooter with true first person locomotion and a scalable weapon system, built in Unreal Engine." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="../index.html">OLIVER CREESE</a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="../index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="../index.html#projects">Portfolio &#9662;</a>
+          <ul class="dropdown-menu">
+            <li><a href="uncharted-rally.html">Uncharted Rally</a></li>
+            <li><a href="spitting-fax.html">Spitting Fax</a></li>
+            <li><a href="knights-resurrection.html">Knights Resurrection</a></li>
+            <li><a href="echoes-of-salvation.html">Echoes Of Salvation</a></li>
+          </ul>
+        </li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Unreal Engine &middot; Lead Programmer &amp; Combat Designer</p>
+        <h1>Echoes Of Salvation</h1>
+        <p class="subtitle">
+          A fast-paced first person arena shooter where you play as a robot sent to
+          destroy the alien threat that has taken over the surface of the planet.
+          High-octane combat against hordes of insect and reptilian enemies, with an
+          expansive arsenal of weapons, weapon mods and enhanced movement. Built in
+          my second year of university.
+        </p>
+
+        <div class="meta-grid">
+          <div class="meta-item">
+            <span class="meta-label">Role</span>
+            <span class="meta-value">Lead Programmer &amp; Combat Designer</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Engine</span>
+            <span class="meta-value">Unreal Engine</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Platform</span>
+            <span class="meta-value">Windows</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Controls</span>
+            <span class="meta-value">Keyboard &amp; Mouse</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Key Features</h2>
+        <p class="section-intro">Built around player feel: realistic weapon handling and total freedom of movement.</p>
+        <ul class="feature-list">
+          <li>True first person locomotion</li>
+          <li>Procedural animations for recoil and weapon sway</li>
+          <li>Scalable weapon system using skeletal mesh components and a proper class inheritance hierarchy</li>
+          <li>Dash and double jump movement mechanics</li>
+          <li>Weapon mod system</li>
+          <li>Dynamic world space UI</li>
+          <li>Boss fight AI</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="container split">
+        <div>
+          <h3>Design</h3>
+          <p>
+            Every system was designed with player feel in mind — realistic weapon feel
+            and freedom of movement. Each weapon serves a specific purpose, and the UI
+            adopts a robotic interface style to boost immersion.
+          </p>
+          <p>
+            Inspired by <strong>Ultrakill</strong> and <strong>Destiny</strong>.
+          </p>
+        </div>
+        <div>
+          <h3>Development Challenges</h3>
+          <p>
+            True first person locomotion required mapping mouse input to spine bone
+            rotations, so the camera and body always stay in sync.
+          </p>
+          <p>
+            Managing which mods fit which weapons led to a classification system
+            within the weapon class hierarchy, which also drives each weapon's firing
+            logic.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Gameplay Loop</h2>
+        <ol class="loop-steps">
+          <li>Select your weapons</li>
+          <li>Choose your weapon mods</li>
+          <li>Defeat waves of enemies</li>
+          <li>Take down the final boss</li>
+        </ol>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Gallery</h2>
+        <div class="carousel">
+          <div class="carousel-track">
+            <!-- To add an image: copy a screenshot into assets/images,
+                 then add one line here like the ones below.
+                 The alt text describes the image for screen readers and search engines. -->
+            <img src="../assets/images/echoes-poster.jpg"
+                 alt="Echoes Of Salvation poster — a robot holding a weapon with the words 'We tried. We failed.'" />
+          </div>
+          <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
+          <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
+          <div class="carousel-dots"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container project-nav">
+      <a class="btn btn-ghost" href="knights-resurrection.html">&larr; Prev: Knights Resurrection</a>
+      <a class="btn btn-ghost" href="../index.html#projects">All projects &rarr;</a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year">2026</span> Oliver Creese. Built by hand with HTML &amp; CSS.</p>
+      <div class="footer-links">
+        <a href="https://github.com/olivercreese" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://uk.linkedin.com/in/oliver-creese-88675a2ab" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:olicreese@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

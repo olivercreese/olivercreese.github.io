@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     NEW BLOG POST TEMPLATE
+     How to publish a new post (3 steps):
+
+     1. COPY this file (don't edit the template itself!) and give
+        the copy a short name, e.g.  uncharted-rally-008.html
+        It must stay in this "blog" folder.
+
+     2. EDIT the copy: search for the word TODO below — every spot
+        you need to change is marked with it.
+
+     3. ADD A CARD on the blog index page (blog.html in the main
+        folder) so people can find the post. There is a comment in
+        that file showing exactly what to paste.
+
+     Tips:
+     - Images: put the file in assets/images first, then use
+         <figure>
+           <img src="../assets/images/my-image.jpg" alt="describe it" />
+           <figcaption>Optional caption under the image.</figcaption>
+         </figure>
+     - YouTube videos: on YouTube click Share > Embed and copy the
+       11-character code from the URL into the iframe like below.
+     ============================================================ -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- TODO: the browser-tab title of your post -->
+  <title>My New Post Title | Oliver Creese</title>
+  <!-- TODO: a one-sentence summary (shown in Google results) -->
+  <meta name="description" content="One sentence describing what this post covers." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="../index.html">OLIVER CREESE</a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="../index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="../index.html#projects">Portfolio &#9662;</a>
+          <ul class="dropdown-menu">
+            <li><a href="../projects/uncharted-rally.html">Uncharted Rally</a></li>
+            <li><a href="../projects/spitting-fax.html">Spitting Fax</a></li>
+            <li><a href="../projects/knights-resurrection.html">Knights Resurrection</a></li>
+            <li><a href="../projects/echoes-of-salvation.html">Echoes Of Salvation</a></li>
+          </ul>
+        </li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- TODO: data-num is the big ghost number in the corner, e.g. "008" -->
+    <section class="page-hero post-hero" data-num="008">
+      <div class="container">
+        <p class="eyebrow">Dev Log &middot; Uncharted Rally</p>
+        <!-- TODO: the post title shown on the page -->
+        <h1>My New Post Title</h1>
+        <!-- TODO: date and reading time -->
+        <p class="post-info">1 January 2027 <span class="sep">/</span> 2 min read <span class="sep">/</span> Oliver Creese</p>
+      </div>
+    </section>
+
+    <article class="post-body container">
+      <!-- TODO: the opening line of the post, shown bigger than the rest -->
+      <p class="post-lead">
+        A punchy one-or-two sentence intro to what this post is about.
+      </p>
+
+      <hr class="post-divider" />
+
+      <!-- TODO: your sections. Copy/paste the h2 + p pairs as many
+           times as you need. The "//" prefix appears automatically. -->
+      <h2>First Section Heading</h2>
+      <p>
+        First paragraph of this section.
+      </p>
+      <p>
+        You can have as many paragraphs as you like — each one goes in
+        its own &lt;p&gt; ... &lt;/p&gt; pair.
+      </p>
+
+      <h2>Second Section Heading</h2>
+      <p>
+        More writing here.
+      </p>
+
+      <!-- OPTIONAL: an image with a caption. Delete if not needed. -->
+      <figure>
+        <img src="../assets/images/my-screenshot.jpg" alt="Describe what the image shows" />
+        <figcaption>A short caption under the image.</figcaption>
+      </figure>
+
+      <!-- OPTIONAL: a YouTube video. Replace VIDEO_ID_HERE with the
+           11-character code from the video's URL. Delete if not needed. -->
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_HERE"
+                title="Video title"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+      </div>
+    </article>
+
+    <!-- TODO: link "Older" to the previous newest post so readers can
+         keep going, and update that post's "Newer" link to point here. -->
+    <div class="container project-nav">
+      <a class="btn btn-ghost" href="../blog.html">&larr; All posts</a>
+      <a class="btn btn-ghost" href="uncharted-rally-007.html">Older: Uncharted Rally #007 &rarr;</a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year">2026</span> Oliver Creese. Built by hand with HTML &amp; CSS.</p>
+      <div class="footer-links">
+        <a href="https://github.com/olivercreese" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://uk.linkedin.com/in/oliver-creese-88675a2ab" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:olicreese@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

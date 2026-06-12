@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     NEW PROJECT PAGE TEMPLATE
+     How to add a new project (3 steps):
+
+     1. COPY this file (don't edit the template itself!) and give
+        the copy a short name, e.g.  my-new-game.html
+        It must stay in this "projects" folder.
+
+     2. EDIT the copy: search for the word TODO below — every spot
+        you need to change is marked with it. Put your screenshots
+        in assets/images first (ask Claude to shrink them if they
+        are large game captures).
+
+     3. LINK to the new page from two places:
+        a) The homepage: open index.html and paste a project card
+           into the project grid — there is a comment there showing
+           exactly what to copy.
+        b) The "Portfolio" dropdown menu: it appears in the header
+           of EVERY page (index.html, blog.html, every file in
+           projects/ and blog/, and both _template files). Add one
+           line inside each <ul class="dropdown-menu">:
+             <li><a href="my-new-game.html">My New Game</a></li>
+           (use projects/my-new-game.html on index.html and
+           blog.html, and ../projects/my-new-game.html in the blog
+           folder). This is the tedious part of a hand-coded site —
+           you can also just ask Claude to do this step for you.
+     ============================================================ -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- TODO: browser-tab title -->
+  <title>My New Game | Oliver Creese</title>
+  <!-- TODO: one-sentence summary (shown in Google results) -->
+  <meta name="description" content="One sentence describing the game and your role." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="../index.html">OLIVER CREESE</a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="../index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="../index.html#projects">Portfolio &#9662;</a>
+          <ul class="dropdown-menu">
+            <li><a href="uncharted-rally.html">Uncharted Rally</a></li>
+            <li><a href="spitting-fax.html">Spitting Fax</a></li>
+            <li><a href="knights-resurrection.html">Knights Resurrection</a></li>
+            <li><a href="echoes-of-salvation.html">Echoes Of Salvation</a></li>
+            <!-- TODO: add your new project here too -->
+          </ul>
+        </li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <!-- TODO: engine and your role, shown small above the title -->
+        <p class="eyebrow">Unreal Engine &middot; Gameplay Programmer</p>
+        <!-- TODO: the game's name -->
+        <h1>My New Game</h1>
+        <!-- TODO: 2-4 sentences introducing the game -->
+        <p class="subtitle">
+          What kind of game is it, what does the player do, and what was the
+          context (university module, game jam, personal project)?
+        </p>
+
+        <!-- TODO: the main screenshot. Put the file in assets/images first. -->
+        <img class="project-hero-img" src="../assets/images/my-game-hero.jpg"
+             alt="Describe what the screenshot shows" />
+
+        <!-- TODO: fill in the quick facts. Add or delete boxes as needed. -->
+        <div class="meta-grid">
+          <div class="meta-item">
+            <span class="meta-label">Role</span>
+            <span class="meta-value">Gameplay Programmer</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Engine</span>
+            <span class="meta-value">Unreal Engine</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Platform</span>
+            <span class="meta-value">Windows</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Controls</span>
+            <span class="meta-value">Keyboard &amp; Mouse</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Status</span>
+            <span class="meta-value">In Development</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Main Features</h2>
+        <p class="section-intro">A one-line introduction to the feature list.</p>
+        <!-- TODO: one <li> per feature. Add or remove lines freely. -->
+        <ul class="feature-list">
+          <li>First impressive technical feature</li>
+          <li>Second feature</li>
+          <li>Third feature</li>
+          <li>Fourth feature</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="container split">
+        <div>
+          <h3>Design</h3>
+          <!-- TODO: the look/feel, inspirations, platform reasoning -->
+          <p>
+            What drove the visual and gameplay design decisions?
+          </p>
+          <p>
+            Inspired by <strong>Game One</strong> and <strong>Game Two</strong>.
+          </p>
+        </div>
+        <div>
+          <h3>Development Challenges</h3>
+          <!-- TODO: the hardest problems and how you solved them -->
+          <p>
+            What was difficult, and what was your solution?
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Gameplay Loop</h2>
+        <!-- TODO: one <li> per step — the numbers appear automatically -->
+        <ol class="loop-steps">
+          <li>First thing the player does</li>
+          <li>Then this</li>
+          <li>Then this</li>
+          <li>And finally this</li>
+        </ol>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Gallery</h2>
+        <div class="carousel">
+          <div class="carousel-track">
+            <!-- TODO: one <img> line per screenshot. The arrows and dots
+                 adjust automatically (and hide if there's only one image). -->
+            <img src="../assets/images/my-game-screenshot-1.jpg" alt="Describe the screenshot" />
+            <img src="../assets/images/my-game-screenshot-2.jpg" alt="Describe the screenshot" />
+          </div>
+          <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
+          <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
+          <div class="carousel-dots"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TODO: optionally update the prev/next links on your other
+         project pages so the chain includes this one -->
+    <div class="container project-nav">
+      <a class="btn btn-ghost" href="../index.html#projects">&larr; All projects</a>
+      <a class="btn btn-ghost" href="uncharted-rally.html">Next: Uncharted Rally &rarr;</a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year">2026</span> Oliver Creese. Built by hand with HTML &amp; CSS.</p>
+      <div class="footer-links">
+        <a href="https://github.com/olivercreese" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://uk.linkedin.com/in/oliver-creese-88675a2ab" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:olicreese@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oliver Creese | Game Programmer</title>
+  <meta name="description" content="Portfolio of Oliver Creese, a game programmer focused on crafting responsive, readable gameplay systems in Unreal Engine and Unity." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="index.html">OLIVER CREESE</a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="index.html#projects">Portfolio &#9662;</a>
+          <ul class="dropdown-menu">
+            <li><a href="projects/uncharted-rally.html">Uncharted Rally</a></li>
+            <li><a href="projects/spitting-fax.html">Spitting Fax</a></li>
+            <li><a href="projects/knights-resurrection.html">Knights Resurrection</a></li>
+            <li><a href="projects/echoes-of-salvation.html">Echoes Of Salvation</a></li>
+          </ul>
+        </li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============ Hero ============ -->
+    <section class="hero">
+      <div class="container">
+        <p class="eyebrow">Game Programmer</p>
+        <h1>Hi, I'm <span class="accent">Oliver Creese</span>.</h1>
+        <p>
+          I'm a game programmer focused on crafting responsive, readable gameplay
+          systems — clean code, intuitive mechanics, and the architecture that
+          supports them. I build games in Unreal Engine and Unity.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-solid" href="#projects">View my work</a>
+          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Projects ============ -->
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Portfolio</h2>
+        <p class="section-intro">A selection of the games I've designed and programmed.</p>
+
+        <div class="marquee-wrap">
+          <div class="project-marquee">
+            <div class="marquee-track">
+
+          <!-- ============================================================
+               ADDING A NEW PROJECT? Create its page first (copy
+               projects/_template.html), then paste a card like this.
+               The carousel duplicates and scrolls the cards automatically —
+               just add yours once, anywhere in the list:
+
+          <article class="project-card">
+            <img src="assets/images/my-game-hero.jpg" alt="Describe the screenshot" />
+            <div class="card-body">
+              <h3>My New Game</h3>
+              <p class="card-sub">One-line genre description</p>
+              <p>
+                Two or three sentences selling the game.
+              </p>
+              <div class="card-meta">
+                <span class="tag">Unreal Engine</span>
+                <span class="tag">Your Role</span>
+              </div>
+              <a class="card-link" href="projects/my-new-game.html">Learn more &rarr;</a>
+            </div>
+          </article>
+
+               Don't forget to also add the project to the Portfolio
+               dropdown menu at the top of every page.
+               ============================================================ -->
+
+          <article class="project-card">
+            <img src="assets/images/uncharted-rally-road.jpg" alt="Procedurally generated rally stage in Uncharted Rally" />
+            <div class="card-body">
+              <h3>Uncharted Rally</h3>
+              <p class="card-sub">Procedurally Generated Rally Game</p>
+              <p>
+                A rally game where each stage is generated using a terrain chunking
+                system. Customise your vehicle to meet the needs of each stage and
+                compete against the AI opponent to win the championship.
+              </p>
+              <div class="card-meta">
+                <span class="tag">Unreal Engine</span>
+                <span class="tag">Solo Developer</span>
+                <span class="tag">In Development</span>
+              </div>
+              <a class="card-link" href="projects/uncharted-rally.html">Learn more &rarr;</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <img src="assets/images/knights-hero.jpg" alt="A knight reaching for a sword in a field in Knights Resurrection" />
+            <div class="card-body">
+              <h3>Knights Resurrection</h3>
+              <p class="card-sub">Open World Fantasy RPG</p>
+              <p>
+                An immersive open world experience where you play as Iraemyr, a farmer
+                enlisted to fight for the last free kingdom against a corrupt prince
+                who bends the world to his will with dark magic.
+              </p>
+              <div class="card-meta">
+                <span class="tag">Unreal Engine</span>
+                <span class="tag">Combat Designer</span>
+                <span class="tag">Gameplay Programmer</span>
+              </div>
+              <a class="card-link" href="projects/knights-resurrection.html">Learn more &rarr;</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <img src="assets/images/spitting-fax-cover.jpg" alt="Spitting Fax title art with a pie chart and a tomato" />
+            <div class="card-body">
+              <h3>Spitting Fax</h3>
+              <p class="card-sub">Physics-Based Party Game</p>
+              <p>
+                A chaotic multiplayer party game where players deliver ridiculous
+                presentations built from each other's prompts — then survive a crowd
+                that judges them with tomatoes or cash. Ragdoll physics included.
+              </p>
+              <div class="card-meta">
+                <span class="tag">Unity</span>
+                <span class="tag">Physics Programmer</span>
+                <span class="tag">Multiplayer</span>
+              </div>
+              <a class="card-link" href="projects/spitting-fax.html">Learn more &rarr;</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <img src="assets/images/echoes-poster.jpg" alt="Echoes Of Salvation poster of a robot holding a weapon" />
+            <div class="card-body">
+              <h3>Echoes Of Salvation</h3>
+              <p class="card-sub">First Person Arena Shooter</p>
+              <p>
+                A supercharged, high-octane shooter where you play as a machine sent
+                to destroy hordes of insect and reptilian enemies, armed with an
+                expansive arsenal and enhanced movement.
+              </p>
+              <div class="card-meta">
+                <span class="tag">Unreal Engine</span>
+                <span class="tag">Lead Programmer</span>
+                <span class="tag">Combat Designer</span>
+              </div>
+              <a class="card-link" href="projects/echoes-of-salvation.html">Learn more &rarr;</a>
+            </div>
+          </article>
+
+            </div>
+          </div>
+          <button class="carousel-btn prev marquee-btn" aria-label="Scroll projects left">&#10094;</button>
+          <button class="carousel-btn next marquee-btn" aria-label="Scroll projects right">&#10095;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Skills ============ -->
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">Skills</h2>
+        <p class="section-intro">The engines, languages and tools I work with — hover or tap a card for the details.</p>
+
+        <div class="skills-grid">
+          <div class="skill" tabindex="0">
+            <div class="skill-logo"><img src="assets/images/unreal-logo.png" alt="Unreal Engine logo" /></div>
+            <span>Unreal Engine</span>
+            <p class="skill-detail">
+              I have extensive experience developing in <strong>Unreal Engine 5</strong>
+              across <strong>C++ and Blueprint</strong>, working on projects spanning
+              open-world RPGs, first-person shooters, and racing simulations. My most
+              recent work includes <strong>combat systems</strong> using input-based
+              target selection, weapon and resource based upgrade systems, and
+              <strong>procedural generation</strong> via the Procedural Mesh Component
+              and a chunking system. I have solid experience with
+              <strong>animation programming</strong> through Anim Blueprints and
+              procedural techniques for weapon recoil. My broader focus is on
+              <strong>scalable architecture</strong> — using delegates, Blueprint
+              Interfaces, and proper class inheritance hierarchies to keep systems
+              decoupled, maintainable, and easy to iterate on.
+            </p>
+          </div>
+          <div class="skill" tabindex="0">
+            <div class="skill-logo"><img src="assets/images/unity-logo.png" alt="Unity logo" /></div>
+            <span>Unity &amp; C#</span>
+            <p class="skill-detail">
+              I have experience developing in <strong>Unity</strong> across a range
+              of genres including party games, survival horror, and 2D arcade games
+              — one of which <strong>won a game jam and is published on
+              Steam</strong>. My work includes <strong>multiplayer
+              implementation</strong> using Netcode for GameObjects and Unity
+              Sessions, managing lobby state and scene transitions across a
+              replicated multiplayer environment. I have implemented a
+              <strong>replicated active ragdoll system</strong> driven by
+              ConfigurableJoints with a separate hidden mesh for animation blending
+              and physics-based player interactions. I have also built
+              <strong>custom AI systems</strong> using NavMesh with state machines
+              managing multiple behavioural states, including systems where AI
+              behaviour and presentation change dynamically at runtime based on game
+              state.
+            </p>
+          </div>
+          <div class="skill" tabindex="0">
+            <div class="skill-logo"><img src="assets/images/cpp-logo.png" alt="C++ logo" /></div>
+            <span>C++ &amp; OOP</span>
+            <p class="skill-detail">
+              I have extensive experience writing <strong>C++</strong> across
+              multiple environments and abstraction levels. Within
+              <strong>Unreal Engine 5</strong> I work regularly in C++ for building
+              complex gameplay systems that lie beyond the capabilities of
+              Blueprints, with marginal performance gains and the benefit of
+              <strong>manual memory management</strong>. I have also worked with
+              <strong>low-level in-house engines</strong> at my university, building
+              games from scratch in both 2D and 3D contexts — including
+              <strong>physics implementations</strong> such as Hooke's law for
+              surface simulation, enemy pathfinding, animation systems, and weapon
+              systems with upgrade pipelines, all without the abstractions of a
+              commercial engine. Alongside practical experience I have been studying
+              <strong>modern C++</strong> in depth, including memory management,
+              <strong>smart pointers, and parallelisation</strong> — with a focus on
+              real-world use cases such as <strong>multithreaded chunk
+              loading</strong> for large-scale procedural environments.
+            </p>
+          </div>
+          <div class="skill" tabindex="0">
+            <div class="skill-logo"><img src="assets/images/opengl-logo.webp" alt="OpenGL logo" /></div>
+            <span>OpenGL API</span>
+            <p class="skill-detail">
+              I have experience building rendered scenes in <strong>OpenGL</strong>,
+              working directly with the <strong>graphics pipeline</strong> and
+              writing <strong>custom shaders</strong>. My work covers techniques
+              including heightmap-based <strong>terrain tessellation</strong>,
+              <strong>shadow mapping</strong>, light attenuation,
+              <strong>water rendering</strong> and reflective materials. I have also
+              implemented creative solutions such as simulating clouds using a
+              particle system with layered opacity and alpha blending.
+            </p>
+          </div>
+          <div class="skill" tabindex="0">
+            <div class="skill-logo"><img src="assets/images/maya-logo.png" alt="Autodesk Maya logo" /></div>
+            <span>Autodesk Maya</span>
+            <!-- TODO: this skill had no popup on the Wix site, so this text is a
+                 placeholder — rewrite it in your own words -->
+            <p class="skill-detail">
+              I use <strong>Autodesk Maya</strong> for creating and preparing
+              game-ready 3D assets — <strong>modelling, UV unwrapping</strong> and
+              basic <strong>rigging</strong> — and for getting animations ready to
+              import into Unreal Engine and Unity.
+            </p>
+          </div>
+          <div class="skill" tabindex="0">
+            <div class="skill-logo"><img class="invert" src="assets/images/git-logo.png" alt="Git logo" /></div>
+            <span>Git Version Control</span>
+            <!-- TODO: this skill had no popup on the Wix site, so this text is a
+                 placeholder — rewrite it in your own words -->
+            <p class="skill-detail">
+              I use <strong>Git</strong> for version control across all of my
+              projects, working with <strong>branching workflows</strong> when
+              collaborating with teammates and hosting my repositories on
+              <strong>GitHub</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Contact ============ -->
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-intro">
+          Want to talk about a project, a role, or just games? Reach me through any
+          of these.
+        </p>
+
+        <div class="contact-grid">
+          <a class="contact-card" href="mailto:olicreese@gmail.com">
+            <div class="email-icon">&#9993;</div>
+            <h3>Email Me</h3>
+            <p>olicreese@gmail.com</p>
+          </a>
+          <a class="contact-card" href="https://github.com/olivercreese" target="_blank" rel="noopener">
+            <img src="assets/images/github-logo.png" alt="GitHub logo" />
+            <h3>Check out my GitHub!</h3>
+            <p>github.com/olivercreese</p>
+          </a>
+          <a class="contact-card" href="https://uk.linkedin.com/in/oliver-creese-88675a2ab" target="_blank" rel="noopener">
+            <img src="assets/images/linkedin-logo.png" alt="LinkedIn logo" />
+            <h3>Let's connect!</h3>
+            <p>LinkedIn — Oliver Creese</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year">2026</span> Oliver Creese. Built by hand with HTML &amp; CSS.</p>
+      <div class="footer-links">
+        <a href="https://github.com/olivercreese" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://uk.linkedin.com/in/oliver-creese-88675a2ab" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:olicreese@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
