@@ -39,8 +39,10 @@ if (marqueeWrap) {
   originals.forEach((card) => {
     const clone = card.cloneNode(true);
     // the clones are purely visual: hide them from screen readers
-    // and keep their links out of keyboard tab order
+    // and keep their links out of keyboard tab order (the card itself
+    // is a link, plus any links nested inside it)
     clone.setAttribute("aria-hidden", "true");
+    if (clone.matches("a")) clone.tabIndex = -1;
     clone.querySelectorAll("a").forEach((link) => { link.tabIndex = -1; });
     track.appendChild(clone);
   });
@@ -121,12 +123,23 @@ if (marqueeWrap) {
   ["pointerup", "pointercancel"].forEach((type) => {
     marquee.addEventListener(type, () => { dragging = false; });
   });
-  // a real drag shouldn't count as a click on the card underneath
   marquee.addEventListener("click", (e) => {
+    // keyboard activation (Enter/Space) has no pointer coordinates —
+    // let the browser follow the focused card's link natively
+    if (e.detail === 0) return;
+
+    // a real drag shouldn't count as a click on the card underneath
     if (dragDistance > 8) {
       e.preventDefault();
       e.stopPropagation();
+      return;
     }
+
+    // setPointerCapture (used for dragging) retargets the click to the
+    // marquee, so the card's own link never fires. Resolve the card under
+    // the cursor and follow its link ourselves.
+    const card = document.elementFromPoint(e.clientX, e.clientY)?.closest(".project-card");
+    if (card && card.href) window.location.href = card.href;
   }, true);
 }
 
