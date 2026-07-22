@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uncharted Rally #008 | Oliver Creese</title>
+  <meta name="description" content="Dev log #008 for Uncharted Rally: dynamic per-wheel traction, six track surfaces, surface kick-up effects, and FMOD-driven engine audio." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="../index.html">OLIVER CREESE</a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="../index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="../index.html#projects">Portfolio &#9662;</a>
+          <ul class="dropdown-menu">
+            <li><a href="../projects/uncharted-rally.html">Uncharted Rally</a></li>
+            <li><a href="../projects/spitting-fax.html">Spitting Fax</a></li>
+            <li><a href="../projects/knights-resurrection.html">Knights Resurrection</a></li>
+            <li><a href="../projects/echoes-of-salvation.html">Echoes Of Salvation</a></li>
+          </ul>
+        </li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero post-hero" data-num="008">
+      <div class="container">
+        <p class="eyebrow">Dev Log &middot; Uncharted Rally</p>
+        <h1>Uncharted Rally #008</h1>
+        <p class="post-info">22 July 2026 <span class="sep">/</span> 2 min read <span class="sep">/</span> Oliver Creese</p>
+      </div>
+    </section>
+
+    <article class="post-body container">
+      <p class="post-lead">
+        Dynamic per-wheel traction, six new track surfaces, and the kick-up
+        particle and sound effects that bring them to life.
+      </p>
+
+      <hr class="post-divider" />
+
+      <h2>Dynamic Traction</h2>
+      <p>
+        I've implemented a system that controls the friction multiplier per
+        wheel depending on whether that wheel is actually on the track. If a
+        wheel drifts off the track its friction multiplier is reduced, which
+        forces players to stay on the racing line for optimal grip. While on
+        the track, friction is instead dictated by the current weather
+        condition and the tyre compound in use. This feeds directly into the
+        new surface kick-up effect system, which uses the same per-wheel
+        surface data to control when particles should be emitted.
+      </p>
+
+      <h2>Different Track Surfaces</h2>
+      <p>
+        There are now six different track surfaces that dictate how the car
+        interacts with the ground. Each surface has its own physical material
+        applied to the terrain on generation, and the surface type is
+        randomised per stage and shown in the pre-stage car setup screen so
+        players can customise their car for each unique stage. This also
+        drives the particle effects, since each surface type has its own
+        dedicated effect.
+      </p>
+
+      <h2>Kick-Up Effects</h2>
+      <p>
+        The kick-up effect is emitted from each car's tyres to give a sense
+        of power and mass as it moves across a surface. Depending on the
+        car's drivetrain, the effect is more potent at the front or the rear.
+        Using a fixed update cycle, I check per wheel what the Chaos Wheeled
+        Vehicle component has collected that frame &mdash; whether the car is
+        skidding, whether the wheel is slipping, and its RPM &mdash; and feed
+        that into the particle system to control the velocity and quantity of
+        particles emitted.
+      </p>
+
+      <h2>Sounds</h2>
+      <p>
+        Sound is driven by a pre-made FMOD sound bank, integrated using the
+        FMOD for Unreal plugin, which lets me feed runtime data into the bank
+        for accurate audio. The bank allows custom tuning of turbo and
+        supercharger sounds per car, giving each vehicle a unique voice.
+        There are still a few hitches with the engine sound caused by the
+        engine simulation itself that I need to figure out.
+      </p>
+
+      <h2>Current Issues</h2>
+      <p>
+        The engine sound work exposed one of the more glaring issues with
+        the Chaos Wheeled Vehicle component: the engine RPM cut-off/soft
+        limiter it applies to prevent oversteer under acceleration. It really
+        detracts from the experience, because without control over that RPM
+        cut-off the sound always cuts off abruptly, which sounds jarring. I'm
+        looking into ways to override this without breaking the car's
+        handling, as well as looking at custom or third-party vehicle
+        components.
+      </p>
+
+      <p>
+        Here's the trailer I put together to showcase where the game is at
+        right now:
+      </p>
+
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/BHTscDjUo1s"
+                title="Uncharted Rally trailer"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+      </div>
+    </article>
+
+    <div class="container project-nav">
+      <a class="btn btn-ghost" href="../blog.html">&larr; All posts</a>
+      <a class="btn btn-ghost" href="uncharted-rally-007.html">Older: Uncharted Rally #007 &rarr;</a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year">2026</span> Oliver Creese. Built by hand with HTML &amp; CSS.</p>
+      <div class="footer-links">
+        <a href="https://github.com/olivercreese" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://uk.linkedin.com/in/oliver-creese-88675a2ab" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:olicreese@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
