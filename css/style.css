@@ -555,6 +555,25 @@ section { padding: 4.5rem 0; }
 
 .meta-item .meta-value { font-weight: 600; font-size: 0.95rem; }
 
+/* repo callout box */
+.repo-callout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 1.1rem 1.4rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.repo-callout p {
+  font-family: var(--font-head);
+  font-weight: 600;
+}
+
 /* feature list */
 .feature-list {
   list-style: none;
