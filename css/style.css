@@ -11,13 +11,13 @@
   --border: #2b231e;
   --text: #f7f3ef;          /* warm white */
   --muted: #a59a90;
-  --accent: #ff6b35;        /* sunset orange */
-  --accent-2: #ffa05c;      /* lighter sunset tone for gradients */
-  --accent-soft: rgba(255, 107, 53, 0.12);
-  --on-accent: #1f0c03;     /* dark text used on orange buttons */
+  --accent: #39ff14;        /* programmer terminal green */
+  --accent-2: #7dffa8;      /* lighter terminal tone for gradients */
+  --accent-soft: rgba(57, 255, 20, 0.12);
+  --on-accent: #04170a;     /* dark text used on green buttons */
   --radius: 12px;
-  --font-head: "Space Grotesk", sans-serif;
-  --font-body: "Inter", sans-serif;
+  --font-head: "JetBrains Mono", monospace;
+  --font-body: "JetBrains Mono", monospace;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -192,9 +192,9 @@ section { padding: 4.5rem 0; }
 .hero {
   padding: 7rem 0 6rem;
   background:
-    radial-gradient(ellipse 70% 55% at 75% 100%, rgba(255, 107, 53, 0.16), transparent),
-    radial-gradient(ellipse 50% 40% at 15% 0%, rgba(255, 160, 92, 0.07), transparent),
-    radial-gradient(ellipse 90% 30% at 50% 100%, rgba(194, 65, 28, 0.10), transparent);
+    radial-gradient(ellipse 70% 55% at 75% 100%, rgba(57, 255, 20, 0.16), transparent),
+    radial-gradient(ellipse 50% 40% at 15% 0%, rgba(125, 255, 168, 0.07), transparent),
+    radial-gradient(ellipse 90% 30% at 50% 100%, rgba(20, 140, 60, 0.10), transparent);
   border-bottom: 1px solid var(--border);
 }
 
@@ -328,7 +328,7 @@ section { padding: 4.5rem 0; }
   border-radius: 999px;
   background: var(--accent-soft);
   color: var(--accent);
-  border: 1px solid rgba(255, 107, 53, 0.25);
+  border: 1px solid rgba(57, 255, 20, 0.25);
 }
 
 .card-link { font-weight: 600; font-size: 0.95rem; }
@@ -504,7 +504,7 @@ section { padding: 4.5rem 0; }
 .page-hero {
   padding: 4.5rem 0 2.5rem;
   border-bottom: 1px solid var(--border);
-  background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(255, 107, 53, 0.09), transparent);
+  background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(57, 255, 20, 0.09), transparent);
 }
 
 .page-hero .eyebrow {
@@ -738,7 +738,7 @@ section { padding: 4.5rem 0; }
   font-size: clamp(8rem, 24vw, 18rem);
   line-height: 1;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 107, 53, 0.22);
+  -webkit-text-stroke: 1px rgba(57, 255, 20, 0.22);
   pointer-events: none;
   user-select: none;
 }
