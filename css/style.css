@@ -9,15 +9,15 @@
   --surface: #151110;       /* cards and panels */
   --surface-2: #1c1614;     /* slightly lighter panels */
   --border: #2b231e;
-  --text: #f7f3ef;          /* warm white */
-  --muted: #a59a90;
-  --accent: #39ff14;        /* programmer terminal green */
-  --accent-2: #7dffa8;      /* lighter terminal tone for gradients */
-  --accent-soft: rgba(57, 255, 20, 0.12);
+  --text: #e2dcd4;          /* soft warm white */
+  --muted: #958b81;
+  --accent: #5bc483;        /* soft phosphor green */
+  --accent-2: #86d6a2;      /* lighter phosphor tone for gradients */
+  --accent-soft: rgba(91, 196, 131, 0.12);
   --on-accent: #04170a;     /* dark text used on green buttons */
   --radius: 12px;
-  --font-head: "JetBrains Mono", monospace;
-  --font-body: "JetBrains Mono", monospace;
+  --font-head: "Space Mono", monospace;
+  --font-body: "Space Mono", monospace;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -189,37 +189,253 @@ section { padding: 4.5rem 0; }
 /* ============================================================
    Hero (homepage)
    ============================================================ */
+/* The hero is an old-school computer: a CRT monitor on a stand with a
+   keyboard in front. Everything on the "screen" boots in line by line. */
 .hero {
-  padding: 7rem 0 6rem;
-  background:
-    radial-gradient(ellipse 70% 55% at 75% 100%, rgba(57, 255, 20, 0.16), transparent),
-    radial-gradient(ellipse 50% 40% at 15% 0%, rgba(125, 255, 168, 0.07), transparent),
-    radial-gradient(ellipse 90% 30% at 50% 100%, rgba(20, 140, 60, 0.10), transparent);
+  padding: 4.5rem 0 5rem;
+  background: radial-gradient(ellipse 60% 50% at 50% 45%, rgba(91, 196, 131, 0.06), transparent);
   border-bottom: 1px solid var(--border);
 }
 
-.hero .eyebrow {
-  font-family: var(--font-head);
-  color: var(--accent);
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.setup {
+  --phosphor: #6fcf94;
+  --phosphor-dim: #4c8f68;
+  max-width: 940px;
+  margin-inline: auto;
+}
+
+/* monitor casing — dark putty plastic */
+.crt {
+  background: linear-gradient(180deg, #2e2a25 0%, #24211d 55%, #1c1a17 100%);
+  border-radius: 26px;
+  padding: clamp(14px, 3vw, 30px) clamp(14px, 3vw, 30px) 0;
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.06),
+    inset 0 -3px 0 rgba(0, 0, 0, 0.4),
+    0 30px 60px rgba(0, 0, 0, 0.55);
+}
+
+/* the glass */
+.crt-screen {
+  position: relative;
+  overflow: hidden;
+  container-type: inline-size;
+  background: radial-gradient(ellipse at center, #0b1a10 0%, #06100a 70%, #030805 100%);
+  border-radius: 18px / 22px;
+  padding: clamp(1rem, 3.5cqi, 2.2rem) clamp(1rem, 4cqi, 2.6rem);
+  color: var(--phosphor);
+  font-family: var(--font-body);
+  text-shadow: 0 0 6px rgba(111, 207, 148, 0.35);
+  box-shadow:
+    inset 0 0 0 3px #0f0d0b,
+    inset 0 0 40px rgba(0, 0, 0, 0.85);
+  animation: crt-on 0.7s ease-out both;
+}
+
+/* scanlines */
+.crt-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.22) 0,
+    rgba(0, 0, 0, 0.22) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  z-index: 2;
+}
+
+/* curved-glass vignette and a soft reflection */
+.crt-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 120% 90% at 50% 50%, transparent 60%, rgba(0, 0, 0, 0.55) 100%),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.045) 0%, transparent 35%);
+  z-index: 3;
+}
+
+.crt-screen > * { position: relative; z-index: 1; }
+
+.boot {
+  list-style: none;
+  font-size: clamp(0.68rem, 1.9cqi, 0.85rem);
+  line-height: 1.6;
+  color: var(--phosphor-dim);
+  margin-bottom: 1.4rem;
+}
+.boot .ok { color: var(--phosphor); }
+
+/* 78-column ASCII logo scaled to fit the screen width; a stacked
+   two-line version takes over on narrow screens */
+.ascii-logo {
+  font-family: var(--font-body);
+  line-height: 1.15;
+  white-space: pre;
+  color: var(--phosphor);
+  text-shadow: 0 0 8px rgba(111, 207, 148, 0.5);
+  margin-bottom: 1.4rem;
+}
+.ascii-logo.wide { font-size: 2.05cqi; }
+.ascii-logo.narrow { display: none; font-size: min(3.9cqi, 1.1rem); }
+
+@container (max-width: 720px) {
+  .ascii-logo.wide { display: none; }
+  .ascii-logo.narrow { display: block; }
+}
+
+.crt-screen .eyebrow {
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  font-size: 0.85rem;
-  margin-bottom: 1rem;
+  font-size: clamp(0.72rem, 1.9cqi, 0.85rem);
+  color: var(--phosphor-dim);
+  margin-bottom: 0.6rem;
 }
 
-.hero h1 {
-  font-size: clamp(2.4rem, 6vw, 4rem);
-  margin-bottom: 1.2rem;
+.crt-screen h1 {
+  font-size: clamp(1.25rem, 4.2cqi, 2.2rem);
+  line-height: 1.25;
+  color: #a6e8bf;
+  margin-bottom: 0.9rem;
 }
 
-.hero p {
-  max-width: 58ch;
-  color: var(--muted);
-  font-size: 1.1rem;
-  margin-bottom: 2.2rem;
+.crt-screen .tagline {
+  max-width: 62ch;
+  font-size: clamp(0.8rem, 2.1cqi, 1rem);
+  line-height: 1.7;
+  color: var(--phosphor);
+  margin-bottom: 1.4rem;
 }
 
-.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.prompt {
+  font-size: clamp(0.78rem, 2cqi, 0.95rem);
+  margin-bottom: 0.9rem;
+}
+.prompt .cursor {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.1em;
+  vertical-align: text-bottom;
+  background: var(--phosphor);
+  box-shadow: 0 0 8px rgba(111, 207, 148, 0.6);
+  animation: blink 1s steps(1) infinite;
+}
+
+.hero-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+
+.term-btn {
+  font-family: var(--font-body);
+  font-size: clamp(0.78rem, 2cqi, 0.95rem);
+  color: var(--phosphor);
+  border: 1px solid var(--phosphor-dim);
+  padding: 0.45rem 0.9rem;
+}
+.term-btn::before { content: "> "; }
+.term-btn:hover,
+.term-btn:focus-visible {
+  background: var(--phosphor);
+  color: #06100a;
+  text-shadow: none;
+  text-decoration: none;
+  outline: none;
+}
+
+/* bottom bezel: badge + power light */
+.crt-bezel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0.4rem 0.9rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: #6f675d;
+  text-transform: uppercase;
+}
+.crt-bezel .power { display: flex; align-items: center; gap: 0.5rem; }
+.crt-bezel .led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--phosphor);
+  box-shadow: 0 0 8px var(--phosphor);
+}
+
+/* stand */
+.crt-neck {
+  width: 22%;
+  height: 22px;
+  margin-inline: auto;
+  background: linear-gradient(180deg, #151311, #22201c);
+}
+.crt-base {
+  width: 40%;
+  height: 14px;
+  margin-inline: auto;
+  border-radius: 8px 8px 4px 4px;
+  background: linear-gradient(180deg, #2a2722, #1a1815);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* keyboard: rows of keycaps drawn with repeating gradients */
+.keyboard {
+  width: 88%;
+  margin: 1.4rem auto 0;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #2b2823, #1e1c18);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.05), 0 16px 30px rgba(0, 0, 0, 0.5);
+  transform: perspective(700px) rotateX(28deg);
+  transform-origin: top center;
+}
+.keyboard .keys {
+  height: 64px;
+  border-radius: 4px;
+  background:
+    linear-gradient(to right, transparent calc(100% - 3px), #1a1815 0),
+    repeating-linear-gradient(to bottom, #3a362f 0 13px, #1a1815 13px 16px);
+  background-size: 4.6% 100%, 100% 100%;
+}
+
+/* boot sequence: each line appears in turn after the screen powers on */
+.boot-line {
+  opacity: 0;
+  animation: boot-in 0.01s linear forwards;
+  animation-delay: calc(0.7s + var(--i) * 0.22s);
+}
+
+@keyframes boot-in { to { opacity: 1; } }
+
+@keyframes crt-on {
+  0%   { transform: scale(1, 0.004); filter: brightness(4); }
+  45%  { transform: scale(1, 0.004); filter: brightness(4); }
+  100% { transform: scale(1, 1); filter: brightness(1); }
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .crt-screen, .boot-line { animation: none; opacity: 1; }
+  .prompt .cursor { animation: none; }
+}
+
+@media (max-width: 600px) {
+  .keyboard { display: none; }
+  .crt-bezel .badge { display: none; }
+}
 
 /* ============================================================
    Project cards (homepage)
@@ -328,7 +544,7 @@ section { padding: 4.5rem 0; }
   border-radius: 999px;
   background: var(--accent-soft);
   color: var(--accent);
-  border: 1px solid rgba(57, 255, 20, 0.25);
+  border: 1px solid rgba(91, 196, 131, 0.25);
 }
 
 .card-link { font-weight: 600; font-size: 0.95rem; }
@@ -504,7 +720,7 @@ section { padding: 4.5rem 0; }
 .page-hero {
   padding: 4.5rem 0 2.5rem;
   border-bottom: 1px solid var(--border);
-  background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(57, 255, 20, 0.09), transparent);
+  background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(91, 196, 131, 0.07), transparent);
 }
 
 .page-hero .eyebrow {
@@ -738,7 +954,7 @@ section { padding: 4.5rem 0; }
   font-size: clamp(8rem, 24vw, 18rem);
   line-height: 1;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(57, 255, 20, 0.22);
+  -webkit-text-stroke: 1px rgba(91, 196, 131, 0.18);
   pointer-events: none;
   user-select: none;
 }

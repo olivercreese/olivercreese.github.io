@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Oliver Creese | Game Programmer</title>
-  <meta name="description" content="Portfolio of Oliver Creese, a game programmer focused on crafting responsive, readable gameplay systems in Unreal Engine and Unity." />
+  <meta name="description" content="Portfolio of Oliver Creese, a game and engine programmer building games from the engine up in Unreal Engine, Unity and C++." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -38,17 +38,59 @@
   <main>
 
     <!-- ============ Hero ============ -->
+    <!-- An old-school computer: CRT monitor, stand and keyboard. Each element
+         on the screen with style="--i:N" appears in that order as it boots. -->
     <section class="hero">
       <div class="container">
-        <p class="eyebrow">Game Programmer</p>
-        <h1>Hi, I'm <span class="accent">Oliver Creese</span>.</h1>
-        <p>
-          I'm a game programmer focused on crafting responsive, readable gameplay
-          systems. I build games in Unreal Engine and Unity.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-solid" href="#projects">View my work</a>
-          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        <div class="setup">
+          <div class="crt">
+            <div class="crt-screen">
+              <ul class="boot" aria-hidden="true">
+                <li class="boot-line" style="--i:0">OC-BIOS v4.2  (C) Creese Systems</li>
+                <li class="boot-line" style="--i:1">Memory test ............ 640K <span class="ok">OK</span></li>
+                <li class="boot-line" style="--i:2">Loading UNREAL.SYS ..... <span class="ok">OK</span></li>
+                <li class="boot-line" style="--i:3">Loading UNITY.SYS ...... <span class="ok">OK</span></li>
+                <li class="boot-line" style="--i:4">Mounting /engine ....... <span class="ok">OK</span></li>
+              </ul>
+
+<pre class="ascii-logo wide boot-line" style="--i:5" aria-hidden="true">   ____  __    _____    ____________     __________  _________________ ______
+  / __ \/ /   /  _/ |  / / ____/ __ \   / ____/ __ \/ ____/ ____/ ___// ____/
+ / / / / /    / / | | / / __/ / /_/ /  / /   / /_/ / __/ / __/  \__ \/ __/
+/ /_/ / /____/ /  | |/ / /___/ _, _/  / /___/ _, _/ /___/ /___ ___/ / /___
+\____/_____/___/  |___/_____/_/ |_|   \____/_/ |_/_____/_____//____/_____/</pre>
+<pre class="ascii-logo narrow boot-line" style="--i:5" aria-hidden="true">   ____  __    _____    ____________
+  / __ \/ /   /  _/ |  / / ____/ __ \
+ / / / / /    / / | | / / __/ / /_/ /
+/ /_/ / /____/ /  | |/ / /___/ _, _/
+\____/_____/___/  |___/_____/_/ |_|
+   __________  _________________ ______
+  / ____/ __ \/ ____/ ____/ ___// ____/
+ / /   / /_/ / __/ / __/  \__ \/ __/
+/ /___/ _, _/ /___/ /___ ___/ / /___
+\____/_/ |_/_____/_____//____/_____/</pre>
+
+              <p class="eyebrow boot-line" style="--i:6">Game &amp; Engine Programmer</p>
+              <h1 class="boot-line" style="--i:7"><span class="sr-only">Oliver Creese: </span>Building games from the engine up.</h1>
+              <p class="tagline boot-line" style="--i:8">
+                I write the code that makes games tick, from the way a car bites
+                into gravel to the engine systems running underneath. I love finding
+                creative solutions to awkward problems and sweating the small details
+                players feel but never notice.
+              </p>
+              <p class="prompt boot-line" style="--i:9" aria-hidden="true">C:\OLIVER&gt; run portfolio.exe <span class="cursor"></span></p>
+              <div class="hero-actions boot-line" style="--i:10">
+                <a class="term-btn" href="#projects">View my work</a>
+                <a class="term-btn" href="#contact">Get in touch</a>
+              </div>
+            </div>
+            <div class="crt-bezel">
+              <span class="badge">OC-1986</span>
+              <span class="power">Power <span class="led"></span></span>
+            </div>
+          </div>
+          <div class="crt-neck"></div>
+          <div class="crt-base"></div>
+          <div class="keyboard"><div class="keys"></div></div>
         </div>
       </div>
     </section>
