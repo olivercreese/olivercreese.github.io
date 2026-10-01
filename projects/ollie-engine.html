@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OllieEngine | Oliver Creese</title>
+  <meta name="description" content="OllieEngine — a custom game engine built from scratch in C++ and OpenGL by Oliver Creese." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="../index.html">OLIVER CREESE</a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="../index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="../index.html#projects">Portfolio &#9662;</a>
+          <ul class="dropdown-menu">
+            <li><a href="uncharted-rally.html">Uncharted Rally</a></li>
+            <li><a href="ollie-engine.html">OllieEngine</a></li>
+            <li><a href="spitting-fax.html">Spitting Fax</a></li>
+            <li><a href="knights-resurrection.html">Knights Resurrection</a></li>
+            <li><a href="echoes-of-salvation.html">Echoes Of Salvation</a></li>
+          </ul>
+        </li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">C++ &amp; OpenGL &middot; Solo Developer</p>
+        <h1>OllieEngine</h1>
+        <p class="subtitle">
+          My own game engine, built from scratch in C++ on top of OpenGL. It's a
+          personal project to really understand what goes on underneath the engines
+          I use every day: the game loop, the render pipeline, the scene graph and
+          all the maths that holds it together.
+        </p>
+
+        <img class="project-hero-img contain" src="../assets/images/projects/ollie-engine/ollie-engine-logo.jpg"
+             alt="The OllieEngine logo: the letters OE inside a white flame" />
+
+        <div class="meta-grid">
+          <div class="meta-item">
+            <span class="meta-label">Role</span>
+            <span class="meta-value">Solo Developer</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Language</span>
+            <span class="meta-value">C++17</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Graphics</span>
+            <span class="meta-value">OpenGL 3.3 Core</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Libraries</span>
+            <span class="meta-value">GLFW, GLEW, GLM</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Status</span>
+            <span class="meta-value">In Development</span>
+          </div>
+        </div>
+
+        <div class="repo-callout">
+          <p>Check it out for yourself!</p>
+          <a class="btn btn-solid" href="https://github.com/olivercreese/OllieEngine" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Core Features</h2>
+        <p class="section-intro">What the engine can do so far.</p>
+        <ul class="feature-list">
+          <li>Engine library and game executable kept separate, with games plugging in through an Application interface</li>
+          <li>Game loop with delta time, plus keyboard and mouse input handled through GLFW callbacks</li>
+          <li>Render queue of draw commands, with meshes built from a data-driven vertex layout and shaders that report compile errors</li>
+          <li>Scene graph of GameObjects with parent/child transforms composed through the hierarchy</li>
+          <li>Component system with its own type IDs instead of C++ RTTI</li>
+          <li>Quaternion-based rotation and a free-fly camera with mouse look and WASD movement</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="container split">
+        <div>
+          <h3>Design</h3>
+          <p>
+            The engine is built as a library under its own <strong>eng</strong>
+            namespace, and the sample game is a separate executable that links
+            against it. Game code only ever talks to the engine through the
+            Application interface, the scene and its components, so the two stay
+            cleanly separated.
+          </p>
+          <p>
+            Behaviour lives in <strong>components</strong> rather than deep class
+            hierarchies, so a camera is just a GameObject with a camera component
+            and a player controller attached.
+          </p>
+        </div>
+        <div>
+          <h3>Development Challenges</h3>
+          <p>
+            Moving rotation from Euler angles to <strong>quaternions</strong> meant
+            rewriting the camera's mouse look: yaw around the world's up axis, pitch
+            around the camera's own right axis, then normalise so floating-point
+            drift doesn't build up.
+          </p>
+          <p>
+            Some bugs only show up later. The index buffer was being sized with
+            <strong>sizeof(float)</strong> instead of <strong>sizeof(uint32_t)</strong>
+            and only worked because both are 4 bytes, and the mouse look was scaled by
+            delta time, so it turned faster or slower depending on the frame rate.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">The Frame Loop</h2>
+        <p class="section-intro">What the engine does every frame.</p>
+        <ol class="loop-steps">
+          <li>Poll window and input events from GLFW</li>
+          <li>Work out delta time since the last frame</li>
+          <li>Update the game and scene, with components submitting draw commands</li>
+          <li>Build the view and projection matrices from the main camera</li>
+          <li>Draw everything in the render queue, then swap buffers</li>
+        </ol>
+      </div>
+    </section>
+
+    <section style="padding-top: 0;">
+      <div class="container">
+        <h2 class="section-title">Dev Blog</h2>
+        <p class="section-intro">
+          I'm writing dev logs as the engine grows, starting with
+          <a href="../blog/ollie-engine-001.html">OllieEngine #001</a>.
+        </p>
+      </div>
+    </section>
+
+    <div class="container project-nav">
+      <a class="btn btn-ghost" href="uncharted-rally.html">&larr; Prev: Uncharted Rally</a>
+      <a class="btn btn-ghost" href="spitting-fax.html">Next: Spitting Fax &rarr;</a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year">2026</span> Oliver Creese. Built by hand with HTML &amp; CSS.</p>
+      <div class="footer-links">
+        <a href="https://github.com/olivercreese" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://uk.linkedin.com/in/oliver-creese-88675a2ab" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:olicreese@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

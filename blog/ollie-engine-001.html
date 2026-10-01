@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OllieEngine #001 | Oliver Creese</title>
+  <meta name="description" content="The first OllieEngine dev log: building a game engine from scratch in C++ and OpenGL, from the render queue and component system to switching to quaternions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="../index.html">OLIVER CREESE</a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="../index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="../index.html#projects">Portfolio &#9662;</a>
+          <ul class="dropdown-menu">
+            <li><a href="../projects/uncharted-rally.html">Uncharted Rally</a></li>
+            <li><a href="../projects/ollie-engine.html">OllieEngine</a></li>
+            <li><a href="../projects/spitting-fax.html">Spitting Fax</a></li>
+            <li><a href="../projects/knights-resurrection.html">Knights Resurrection</a></li>
+            <li><a href="../projects/echoes-of-salvation.html">Echoes Of Salvation</a></li>
+          </ul>
+        </li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero post-hero" data-num="001">
+      <div class="container">
+        <p class="eyebrow">Dev Log &middot; OllieEngine</p>
+        <h1>OllieEngine #001</h1>
+        <p class="post-info">1 October 2026 <span class="sep">/</span> 3 min read <span class="sep">/</span> Oliver Creese</p>
+      </div>
+    </section>
+
+    <article class="post-body container">
+      <p class="post-lead">
+        A brand new project: my own game engine, built from scratch in C++. No
+        Unreal, no Unity, just me, OpenGL and a lot of matrices. Oh boy.
+      </p>
+
+      <hr class="post-divider" />
+
+      <h2>Why Build an Engine?</h2>
+      <p>
+        I've spent a long time building games on top of Unreal and Unity, and I
+        wanted to properly understand what's happening underneath them. OllieEngine
+        is my way of doing that. Every system in it is something I've had to think
+        through and write myself, from opening a window all the way to getting a
+        3D cube on screen that you can fly around.
+      </p>
+
+      <h2>The Foundations</h2>
+      <p>
+        The engine sits on top of a few small libraries: GLFW for the window and
+        input, GLEW to load OpenGL 3.3 core functions, and GLM for vector and
+        matrix maths, all built with CMake. The engine itself is a library, and
+        the game is a separate executable that plugs into it through an
+        Application interface with Init, Update and Destroy. The Engine runs the
+        main loop: it polls input, works out delta time, updates the game, then
+        draws the frame.
+      </p>
+
+      <h2>Rendering</h2>
+      <p>
+        Meshes wrap up the vertex and index buffers and are described by a
+        data-driven vertex layout, so the same code can handle different vertex
+        formats. Materials bind a shader program and its parameters. Instead of
+        drawing straight away, anything that wants to be drawn submits a command
+        to a render queue, and the engine draws the whole queue once per frame
+        using the main camera's view and projection matrices. I also added proper
+        shader compile and link error checking, so a broken shader now tells me
+        what's wrong instead of just failing silently.
+      </p>
+
+      <h2>Scene, GameObjects and Components</h2>
+      <p>
+        The scene holds a hierarchy of GameObjects, each with a position, rotation
+        and scale. A child's world transform is built by combining its own
+        transform with its parent's, all the way up the chain. Behaviour lives in
+        components, and each component type gets its own ID from a small templated
+        counter, so the engine can look components up without relying on C++
+        RTTI. Right now there's a mesh component, a camera component and a player
+        controller that gives a free-fly camera: hold left mouse to look around,
+        WASD to move, and Q and E to go up and down. To test the hierarchy I've
+        been playing with a spinning cube that has a smaller child cube orbiting
+        around it.
+      </p>
+
+      <h2>Switching to Quaternions</h2>
+      <p>
+        Rotation started out as Euler angles, which is fine until things start
+        combining in strange ways. I've switched everything over to quaternions.
+        The camera yaws around the world's fixed up axis but pitches around its
+        own right axis, which gives the familiar first-person feel where the
+        camera can't tip over. The rotation also gets normalised after each change
+        so small floating-point errors don't pile up over time.
+      </p>
+
+      <h2>Challenges</h2>
+      <p>
+        Some bugs hide really well. The index buffer was being sized using
+        sizeof(float) instead of sizeof(uint32_t), and it only worked because both
+        happen to be 4 bytes. The mouse look was also multiplying the mouse
+        movement by delta time. The mouse movement is already the amount moved
+        that frame, so this made the camera turn faster or slower depending on the
+        frame rate. Removing it means the same swipe of the mouse always turns the
+        camera by the same amount.
+      </p>
+
+      <h2>Current Issues</h2>
+      <p>
+        The camera builds its own view matrix without its own scale, but it still
+        picks up the scale of any parent it's attached to, which would skew the
+        view under a stretched parent. The mouse's previous position is also being
+        updated in two places each frame, which can lose movement when several
+        mouse events arrive in one frame. Finally, the render queue sets the model,
+        view and projection matrices directly on the shader instead of going
+        through the material, which I want to tidy up before the renderer grows
+        any further.
+      </p>
+
+      <p>
+        The code is all on
+        <a href="https://github.com/olivercreese/OllieEngine" target="_blank" rel="noopener">GitHub</a>,
+        and you can read more about the project on the
+        <a href="../projects/ollie-engine.html">OllieEngine project page</a>.
+      </p>
+    </article>
+
+    <div class="container project-nav">
+      <a class="btn btn-ghost" href="../blog.html">&larr; All posts</a>
+      <a class="btn btn-ghost" href="uncharted-rally-008.html">Older: Uncharted Rally #008 &rarr;</a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year">2026</span> Oliver Creese. Built by hand with HTML &amp; CSS.</p>
+      <div class="footer-links">
+        <a href="https://github.com/olivercreese" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://uk.linkedin.com/in/oliver-creese-88675a2ab" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:olicreese@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

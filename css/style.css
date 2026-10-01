@@ -431,13 +431,18 @@ section { padding: 4.5rem 0; }
 }
 .pane-list button[aria-pressed="true"] .ext { color: #06100a; }
 
-.pane-view { padding: 0.8rem 1.1rem; }
+/* every file sits in the same grid cell, so the box is always as tall as the
+   longest one and never changes size when you switch between them */
+.pane-view { display: grid; padding: 0.8rem 1.1rem; }
+.skill-file { grid-area: 1 / 1; }
+.skill-file[hidden] { display: block; visibility: hidden; }
 .skill-file .cmd { color: var(--phosphor-dim); margin-bottom: 0.6rem; }
 .skill-file h3 { font-size: 1.15em; color: #a6e8bf; }
 .skill-file .type { color: var(--phosphor-dim); font-size: 0.8em; letter-spacing: 0.2em; margin-bottom: 0.6rem; }
 .skill-file ul { list-style: none; }
 .skill-file li { margin-bottom: 0.2rem; }
 .skill-file li::before { content: "> "; color: var(--phosphor-dim); }
+.skill-file a { color: #a6e8bf; text-decoration: underline; text-underline-offset: 3px; }
 
 .pane-keys {
   display: flex;
@@ -560,8 +565,8 @@ section { padding: 4.5rem 0; }
    own piece of shelf that reaches into the gaps either side, so the
    pieces join into one plank on each row however the carts wrap. */
 .game-shelf {
-  --cart-w: 190px;
-  --shelf-gap: 2.6rem;
+  --cart-w: 180px;
+  --shelf-gap: 2.4rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -793,6 +798,8 @@ section { padding: 4.5rem 0; }
   border: 1px solid var(--border);
   margin-top: 2.5rem;
 }
+/* for logos: show the whole image on black rather than cropping it */
+.project-hero-img.contain { object-fit: contain; background: #000; }
 
 /* quick facts row */
 .meta-grid {
