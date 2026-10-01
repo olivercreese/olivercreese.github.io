@@ -26,122 +26,41 @@ if (yearSpan) {
 }
 
 // ------------------------------------------------------------
-// Homepage project carousel: drifts slowly on its own, pauses on
-// hover, and can be moved by hand with the arrows or by dragging.
-// The cards are cloned once so the loop wraps around seamlessly.
+// Homepage game shelf: give each cartridge some thickness by
+// stacking thin shell-coloured layers behind its face, and tilt
+// it towards the pointer while hovered.
 // ------------------------------------------------------------
-const marqueeWrap = document.querySelector(".marquee-wrap");
-if (marqueeWrap) {
-  const marquee = marqueeWrap.querySelector(".project-marquee");
-  const track = marqueeWrap.querySelector(".marquee-track");
+const CART_LAYERS = 9;
+const canTilt = window.matchMedia("(hover: hover) and (prefers-reduced-motion: no-preference)").matches;
 
-  const originals = Array.from(track.children);
-  originals.forEach((card) => {
-    const clone = card.cloneNode(true);
-    // the clones are purely visual: hide them from screen readers
-    // and keep their links out of keyboard tab order (the card itself
-    // is a link, plus any links nested inside it)
-    clone.setAttribute("aria-hidden", "true");
-    if (clone.matches("a")) clone.tabIndex = -1;
-    clone.querySelectorAll("a").forEach((link) => { link.tabIndex = -1; });
-    track.appendChild(clone);
-  });
-  track.querySelectorAll("img").forEach((img) => { img.draggable = false; });
+document.querySelectorAll(".cart-slot").forEach((slot) => {
+  const tilt = slot.querySelector(".cart-tilt");
+  const face = tilt.querySelector(".cart-face");
 
-  // JS drives the movement from here on (the CSS animation is only
-  // a fallback for when JS is off)
-  track.style.animation = "none";
-
-  const gap = parseFloat(getComputedStyle(track).gap) || 24;
-  const AUTO_SPEED = 22;            // drift speed in pixels per second
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  let offset = 0;                   // how far the track has moved left
-  let glideTarget = null;           // where an arrow press is sending us
-  let hovering = false;
-  let dragging = false;
-  let dragX = 0;
-  let dragDistance = 0;
-  let lastTime = performance.now();
-
-  // the track holds two copies of the cards; moving by one copy's
-  // width lands on an identical frame, so we wrap there
-  const wrapWidth = () => (track.scrollWidth + gap) / 2;
-
-  function tick(now) {
-    const dt = (now - lastTime) / 1000;
-    lastTime = now;
-
-    if (glideTarget !== null) {
-      // ease toward the arrow-press target
-      offset += (glideTarget - offset) * Math.min(1, dt * 8);
-      if (Math.abs(glideTarget - offset) < 0.5) {
-        offset = glideTarget;
-        glideTarget = null;
-      }
-    } else if (!hovering && !dragging && !reduceMotion) {
-      offset += AUTO_SPEED * dt;
-    }
-
-    const w = wrapWidth();
-    if (offset >= w) { offset -= w; if (glideTarget !== null) glideTarget -= w; }
-    if (offset < 0)  { offset += w; if (glideTarget !== null) glideTarget += w; }
-
-    track.style.transform = "translateX(" + -offset + "px)";
-    requestAnimationFrame(tick);
+  // deepest layer first, so the face ends up on top
+  for (let z = CART_LAYERS; z >= 1; z--) {
+    const layer = document.createElement("div");
+    layer.className = "cart-layer";
+    layer.style.setProperty("--z", z);
+    tilt.insertBefore(layer, face);
   }
-  requestAnimationFrame(tick);
 
-  marqueeWrap.addEventListener("mouseenter", () => { hovering = true; });
-  marqueeWrap.addEventListener("mouseleave", () => { hovering = false; });
+  if (!canTilt) return;
 
-  // arrows move by exactly one card
-  const cardStep = () =>
-    track.querySelector(".project-card").getBoundingClientRect().width + gap;
-
-  marqueeWrap.querySelector(".marquee-btn.prev").addEventListener("click", () => {
-    glideTarget = (glideTarget === null ? offset : glideTarget) - cardStep();
+  slot.addEventListener("pointermove", (e) => {
+    const r = tilt.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    slot.classList.add("is-tilting");
+    tilt.style.setProperty("--ry", `${x * 34}deg`);
+    tilt.style.setProperty("--rx", `${-y * 22}deg`);
   });
-  marqueeWrap.querySelector(".marquee-btn.next").addEventListener("click", () => {
-    glideTarget = (glideTarget === null ? offset : glideTarget) + cardStep();
+  slot.addEventListener("pointerleave", () => {
+    slot.classList.remove("is-tilting");
+    tilt.style.removeProperty("--ry");
+    tilt.style.removeProperty("--rx");
   });
-
-  // drag (or swipe) to scroll
-  marquee.addEventListener("pointerdown", (e) => {
-    dragging = true;
-    dragX = e.clientX;
-    dragDistance = 0;
-    glideTarget = null;
-    marquee.setPointerCapture(e.pointerId);
-  });
-  marquee.addEventListener("pointermove", (e) => {
-    if (!dragging) return;
-    offset -= e.clientX - dragX;
-    dragDistance += Math.abs(e.clientX - dragX);
-    dragX = e.clientX;
-  });
-  ["pointerup", "pointercancel"].forEach((type) => {
-    marquee.addEventListener(type, () => { dragging = false; });
-  });
-  marquee.addEventListener("click", (e) => {
-    // keyboard activation (Enter/Space) has no pointer coordinates —
-    // let the browser follow the focused card's link natively
-    if (e.detail === 0) return;
-
-    // a real drag shouldn't count as a click on the card underneath
-    if (dragDistance > 8) {
-      e.preventDefault();
-      e.stopPropagation();
-      return;
-    }
-
-    // setPointerCapture (used for dragging) retargets the click to the
-    // marquee, so the card's own link never fires. Resolve the card under
-    // the cursor and follow its link ourselves.
-    const card = document.elementFromPoint(e.clientX, e.clientY)?.closest(".project-card");
-    if (card && card.href) window.location.href = card.href;
-  }, true);
-}
+});
 
 // ------------------------------------------------------------
 // Skill cards: expand on hover via CSS; clicking (touch screens)

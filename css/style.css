@@ -438,103 +438,161 @@ section { padding: 4.5rem 0; }
 }
 
 /* ============================================================
-   Project cards (homepage)
+   Game shelf (homepage)
    ============================================================ */
-/* homepage: cards drift sideways on their own; pausing on hover keeps
-   the links clickable. JS duplicates the cards so the loop is seamless,
-   and adds arrow + drag control. */
-.marquee-wrap { position: relative; }
-
-.marquee-wrap .carousel-btn { z-index: 5; }
-
-.project-marquee {
-  overflow: hidden;
-  cursor: grab;
-  touch-action: pan-y; /* horizontal drags steer the carousel, vertical still scrolls the page */
-  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
-}
-
-.project-marquee:active { cursor: grabbing; }
-
-.marquee-track {
-  display: flex;
-  gap: 1.5rem;
-  width: max-content;
-  animation: marquee-drift 50s linear infinite;
-}
-
-.marquee-track .project-card {
-  width: 340px;
-  flex-shrink: 0;
-}
-
-/* shift by exactly one copy of the cards (half the track plus half a gap) */
-@keyframes marquee-drift {
-  to { transform: translateX(calc(-50% - 0.75rem)); }
-}
-
-.project-marquee:hover .marquee-track,
-.project-marquee:focus-within .marquee-track {
-  animation-play-state: paused;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none; }
-}
-
-@media (max-width: 820px) {
-  .marquee-track .project-card { width: 290px; }
-}
-
-.project-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  /* the whole card is a link to the project page */
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-.project-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent);
-  text-decoration: none;
-}
-
-.project-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.project-card .card-body {
-  padding: 1.4rem;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.project-card h3 { font-size: 1.25rem; margin-bottom: 0.4rem; }
-
-.project-card .card-sub {
-  color: var(--accent);
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 0.8rem;
-}
-
-.project-card p { color: var(--muted); font-size: 0.95rem; flex: 1; }
-
-.card-meta {
+/* Each project is a handheld-style game cartridge standing on a shelf.
+   JS stacks thin shell-coloured layers behind each cart so it has real
+   thickness, and tilts it towards the pointer. Every slot carries its
+   own piece of shelf that reaches into the gaps either side, so the
+   pieces join into one plank on each row however the carts wrap. */
+.game-shelf {
+  --cart-w: 190px;
+  --shelf-gap: 2.6rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 1rem 0;
+  justify-content: center;
+  column-gap: var(--shelf-gap);
+  row-gap: 3rem;
+  padding-top: 1.5rem;
+}
+
+.cart-slot {
+  width: var(--cart-w);
+  color: inherit;
+  text-decoration: none;
+}
+.cart-slot:hover { text-decoration: none; }
+
+.cart {
+  perspective: 900px;
+  position: relative;
+  z-index: 1;
+}
+
+.cart-tilt {
+  position: relative;
+  aspect-ratio: 0.86;
+  transform-style: preserve-3d;
+  transform:
+    translateY(var(--lift, 0px))
+    rotateX(var(--rx, 4deg))
+    rotateY(var(--ry, -14deg));
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.cart-slot.is-tilting .cart-tilt { transition: transform 0.08s linear; }
+.cart-slot:hover,
+.cart-slot:focus-visible { --lift: -16px; }
+.cart-slot:focus-visible { outline: none; }
+.cart-slot:focus-visible .cart-info h3 { color: var(--accent); }
+
+.cart-layer,
+.cart-face {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(0 0, 87% 0, 100% 9%, 100% 100%, 0 100%);
+  border-radius: 6px 0 10px 10px;
+}
+.cart-layer {
+  background: color-mix(in srgb, var(--shell) 55%, #000);
+  transform: translateZ(calc(var(--z) * -1.6px));
+}
+.cart-layer:first-child { background: color-mix(in srgb, var(--shell) 35%, #000); }
+
+.cart-face {
+  padding: 13% 8% 0;
+  background: linear-gradient(160deg,
+    color-mix(in srgb, var(--shell) 88%, #fff) 0%,
+    var(--shell) 45%,
+    color-mix(in srgb, var(--shell) 78%, #000) 100%);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -3px 0 rgba(0, 0, 0, 0.25);
+}
+
+.cart-emboss {
+  position: absolute;
+  top: 4.5%;
+  left: 8%;
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: rgba(0, 0, 0, 0.45);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.cart-label {
+  background: #e8e1d4;
+  border-radius: 3px;
+  padding: 5px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+}
+.cart-label-top {
+  background: var(--shell);
+  color: #eee7da;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 6px;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cart-label img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+
+.cart-arrow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 15%;
+  text-align: center;
+  font-size: 0.65rem;
+  color: rgba(0, 0, 0, 0.4);
+}
+.cart-grip {
+  position: absolute;
+  left: 22%;
+  right: 22%;
+  bottom: 7%;
+  height: 7%;
+  background: repeating-linear-gradient(to bottom,
+    rgba(0, 0, 0, 0.35) 0 2px, rgba(255, 255, 255, 0.06) 2px 3px, transparent 3px 5px);
+  border-radius: 2px;
+}
+
+/* this slot's piece of the shelf */
+.shelf-plank {
+  height: 20px;
+  margin: -6px calc(var(--shelf-gap) / -2) 0;
+  background: linear-gradient(180deg, #3a342d 0%, #2a2520 45%, #1a1714 100%);
+  box-shadow: 0 16px 26px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.cart-info { padding-top: 1rem; }
+.cart-info h3 { font-size: 0.98rem; margin-bottom: 0.15rem; transition: color 0.2s; }
+.cart-slot:hover .cart-info h3 { color: var(--accent); }
+.cart-info .cart-sub { color: var(--muted); font-size: 0.75rem; line-height: 1.5; margin-bottom: 0.5rem; }
+
+.cart-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.6rem;
+  list-style: none;
+  font-size: 0.7rem;
+  color: var(--accent);
+}
+.cart-tags li::before { content: "["; color: #4c8f68; }
+.cart-tags li::after { content: "]"; color: #4c8f68; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cart-tilt { transition: none; }
+}
+
+@media (max-width: 600px) {
+  .game-shelf { --cart-w: 140px; --shelf-gap: 1.4rem; }
+  .cart-emboss { font-size: 0.42rem; }
+  .cart-label-top { font-size: 0.5rem; }
 }
 
 .tag {

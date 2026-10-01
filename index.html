@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Oliver Creese | Game Programmer</title>
-  <meta name="description" content="Portfolio of Oliver Creese, a game and engine programmer building games from the engine up in Unreal Engine, Unity and C++." />
+  <meta name="description" content="Portfolio of Oliver Creese, a game programmer building games from the ground up in Unreal Engine, Unity and C++." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
@@ -69,8 +69,8 @@
 / /___/ _, _/ /___/ /___ ___/ / /___
 \____/_/ |_/_____/_____//____/_____/</pre>
 
-              <p class="eyebrow boot-line" style="--i:6">Game &amp; Engine Programmer</p>
-              <h1 class="boot-line" style="--i:7"><span class="sr-only">Oliver Creese: </span>Building games from the engine up.</h1>
+              <p class="eyebrow boot-line" style="--i:6">Game Programmer</p>
+              <h1 class="boot-line" style="--i:7"><span class="sr-only">Oliver Creese: </span>Building games from the ground up.</h1>
               <p class="tagline boot-line" style="--i:8">
                 I write the code that makes games tick, from the way a car bites
                 into gravel to the engine systems running underneath. I love finding
@@ -99,113 +99,131 @@
     <section id="projects">
       <div class="container">
         <h2 class="section-title">Portfolio</h2>
-        <p class="section-intro">A selection of the games I've designed and programmed.</p>
+        <p class="section-intro">Pick a cartridge. Each one is a game I've designed and programmed.</p>
 
-        <div class="marquee-wrap">
-          <div class="project-marquee">
-            <div class="marquee-track">
+        <!-- ============================================================
+             ADDING A NEW PROJECT? Create its page first (copy
+             projects/_template.html), then paste a cartridge like this
+             into the shelf. --shell is the cartridge's plastic colour
+             (pick a darkish one so the label stands out). The shelf
+             wraps onto a new row by itself when it fills up.
 
-          <!-- ============================================================
-               ADDING A NEW PROJECT? Create its page first (copy
-               projects/_template.html), then paste a card like this.
-               The carousel duplicates and scrolls the cards automatically —
-               just add yours once, anywhere in the list:
-
-          <a class="project-card" href="projects/my-new-game.html">
-            <img src="assets/images/my-game-hero.jpg" alt="Describe the screenshot" />
-            <div class="card-body">
-              <h3>My New Game</h3>
-              <p class="card-sub">One-line genre description</p>
-              <p>
-                Two or three sentences selling the game.
-              </p>
-              <div class="card-meta">
-                <span class="tag">Unreal Engine</span>
-                <span class="tag">Your Role</span>
+        <a class="cart-slot" href="projects/my-new-game.html" style="--shell: #2f5a40">
+          <div class="cart" aria-hidden="true">
+            <div class="cart-tilt">
+              <div class="cart-face">
+                <span class="cart-emboss">OC GAME PAK</span>
+                <div class="cart-label">
+                  <div class="cart-label-top">My New Game</div>
+                  <img src="assets/images/my-game-hero.jpg" alt="Describe the screenshot" />
+                </div>
+                <span class="cart-arrow">&#9650;</span>
+                <span class="cart-grip"></span>
               </div>
-            </div>
-          </a>
-
-               Don't forget to also add the project to the Portfolio
-               dropdown menu at the top of every page.
-               ============================================================ -->
-
-          <a class="project-card" href="projects/uncharted-rally.html">
-            <img src="assets/images/projects/uncharted-rally/InGame.png" alt="Procedurally generated rally stage in Uncharted Rally" />
-            <div class="card-body">
-              <h3>Uncharted Rally</h3>
-              <p class="card-sub">Procedurally Generated Rally Game</p>
-              <p>
-                A rally game where each stage is generated using a terrain chunking
-                system. Customise your vehicle to meet the needs of each stage and
-                compete against the AI opponent to win the championship.
-              </p>
-              <div class="card-meta">
-                <span class="tag">Unreal Engine</span>
-                <span class="tag">Solo Developer</span>
-                <span class="tag">In Development</span>
-              </div>
-            </div>
-          </a>
-
-          <a class="project-card" href="projects/knights-resurrection.html">
-            <img src="assets/images/projects/knights-resurrection/MianCharacterClose.png" alt="The main character Iraemyr in Knights Resurrection" />
-            <div class="card-body">
-              <h3>Knights Resurrection</h3>
-              <p class="card-sub">Open World Fantasy RPG</p>
-              <p>
-                An immersive open world experience where you play as Iraemyr, a farmer
-                enlisted to fight for the last free kingdom against a corrupt prince
-                who bends the world to his will with dark magic.
-              </p>
-              <div class="card-meta">
-                <span class="tag">Unreal Engine</span>
-                <span class="tag">Combat Designer</span>
-                <span class="tag">Gameplay Programmer</span>
-              </div>
-            </div>
-          </a>
-
-          <a class="project-card" href="projects/spitting-fax.html">
-            <img src="assets/images/projects/spitting-fax/Lobby.png" alt="Spitting Fax multiplayer lobby screen" />
-            <div class="card-body">
-              <h3>Spitting Fax</h3>
-              <p class="card-sub">Physics-Based Party Game</p>
-              <p>
-                A chaotic multiplayer party game where players deliver ridiculous
-                presentations built from each other's prompts — then survive a crowd
-                that judges them with tomatoes or cash. Ragdoll physics included.
-              </p>
-              <div class="card-meta">
-                <span class="tag">Unity</span>
-                <span class="tag">Physics Programmer</span>
-                <span class="tag">Multiplayer</span>
-              </div>
-            </div>
-          </a>
-
-          <a class="project-card" href="projects/echoes-of-salvation.html">
-            <img src="assets/images/projects/echoes-of-salvation/echoes-poster.jpg" alt="Echoes Of Salvation poster of a robot holding a weapon" />
-            <div class="card-body">
-              <h3>Echoes Of Salvation</h3>
-              <p class="card-sub">First Person Arena Shooter</p>
-              <p>
-                A supercharged, high-octane shooter where you play as a machine sent
-                to destroy hordes of insect and reptilian enemies, armed with an
-                expansive arsenal and enhanced movement.
-              </p>
-              <div class="card-meta">
-                <span class="tag">Unreal Engine</span>
-                <span class="tag">Lead Programmer</span>
-                <span class="tag">Combat Designer</span>
-              </div>
-            </div>
-          </a>
-
             </div>
           </div>
-          <button class="carousel-btn prev marquee-btn" aria-label="Scroll projects left">&#10094;</button>
-          <button class="carousel-btn next marquee-btn" aria-label="Scroll projects right">&#10095;</button>
+          <div class="shelf-plank"></div>
+          <div class="cart-info">
+            <h3>My New Game</h3>
+            <p class="cart-sub">One-line genre description</p>
+            <ul class="cart-tags"><li>Unreal Engine</li><li>Your Role</li></ul>
+          </div>
+        </a>
+
+             Don't forget to also add the project to the Portfolio
+             dropdown menu at the top of every page.
+             ============================================================ -->
+
+        <div class="game-shelf">
+
+          <a class="cart-slot" href="projects/uncharted-rally.html" style="--shell: #2f5a40">
+            <div class="cart" aria-hidden="true">
+              <div class="cart-tilt">
+                <div class="cart-face">
+                  <span class="cart-emboss">OC GAME PAK</span>
+                  <div class="cart-label">
+                    <div class="cart-label-top">Uncharted Rally</div>
+                    <img src="assets/images/projects/uncharted-rally/InGame.png" alt="Procedurally generated rally stage in Uncharted Rally" />
+                  </div>
+                  <span class="cart-arrow">&#9650;</span>
+                  <span class="cart-grip"></span>
+                </div>
+              </div>
+            </div>
+            <div class="shelf-plank"></div>
+            <div class="cart-info">
+              <h3>Uncharted Rally</h3>
+              <p class="cart-sub">Procedurally Generated Rally Game</p>
+              <ul class="cart-tags"><li>Unreal Engine</li><li>Solo Developer</li><li>In Development</li></ul>
+            </div>
+          </a>
+
+          <a class="cart-slot" href="projects/knights-resurrection.html" style="--shell: #5e3232">
+            <div class="cart" aria-hidden="true">
+              <div class="cart-tilt">
+                <div class="cart-face">
+                  <span class="cart-emboss">OC GAME PAK</span>
+                  <div class="cart-label">
+                    <div class="cart-label-top">Knights Resurrection</div>
+                    <img src="assets/images/projects/knights-resurrection/MianCharacterClose.png" alt="The main character Iraemyr in Knights Resurrection" />
+                  </div>
+                  <span class="cart-arrow">&#9650;</span>
+                  <span class="cart-grip"></span>
+                </div>
+              </div>
+            </div>
+            <div class="shelf-plank"></div>
+            <div class="cart-info">
+              <h3>Knights Resurrection</h3>
+              <p class="cart-sub">Open World Fantasy RPG</p>
+              <ul class="cart-tags"><li>Unreal Engine</li><li>Combat Designer</li><li>Gameplay Programmer</li></ul>
+            </div>
+          </a>
+
+          <a class="cart-slot" href="projects/spitting-fax.html" style="--shell: #463a66">
+            <div class="cart" aria-hidden="true">
+              <div class="cart-tilt">
+                <div class="cart-face">
+                  <span class="cart-emboss">OC GAME PAK</span>
+                  <div class="cart-label">
+                    <div class="cart-label-top">Spitting Fax</div>
+                    <img src="assets/images/projects/spitting-fax/Lobby.png" alt="Spitting Fax multiplayer lobby screen" />
+                  </div>
+                  <span class="cart-arrow">&#9650;</span>
+                  <span class="cart-grip"></span>
+                </div>
+              </div>
+            </div>
+            <div class="shelf-plank"></div>
+            <div class="cart-info">
+              <h3>Spitting Fax</h3>
+              <p class="cart-sub">Physics-Based Party Game</p>
+              <ul class="cart-tags"><li>Unity</li><li>Physics Programmer</li><li>Multiplayer</li></ul>
+            </div>
+          </a>
+
+          <a class="cart-slot" href="projects/echoes-of-salvation.html" style="--shell: #2d4a63">
+            <div class="cart" aria-hidden="true">
+              <div class="cart-tilt">
+                <div class="cart-face">
+                  <span class="cart-emboss">OC GAME PAK</span>
+                  <div class="cart-label">
+                    <div class="cart-label-top">Echoes Of Salvation</div>
+                    <img src="assets/images/projects/echoes-of-salvation/echoes-poster.jpg" alt="Echoes Of Salvation poster of a robot holding a weapon" />
+                  </div>
+                  <span class="cart-arrow">&#9650;</span>
+                  <span class="cart-grip"></span>
+                </div>
+              </div>
+            </div>
+            <div class="shelf-plank"></div>
+            <div class="cart-info">
+              <h3>Echoes Of Salvation</h3>
+              <p class="cart-sub">First Person Arena Shooter</p>
+              <ul class="cart-tags"><li>Unreal Engine</li><li>Lead Programmer</li><li>Combat Designer</li></ul>
+            </div>
+          </a>
+
         </div>
       </div>
     </section>
