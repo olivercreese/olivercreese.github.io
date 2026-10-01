@@ -63,18 +63,85 @@ document.querySelectorAll(".cart-slot").forEach((slot) => {
 });
 
 // ------------------------------------------------------------
-// Skill cards: expand on hover via CSS; clicking (touch screens)
-// or pressing Enter toggles them open too.
+// Homepage skills: the Skills button "runs" a file manager on the
+// CRT screen, clearing everything but the logo. Pick a file on the
+// left (click, or the arrow keys) to show it on the right; Back or
+// Esc brings the intro back.
 // ------------------------------------------------------------
-document.querySelectorAll(".skill").forEach((skill) => {
-  skill.addEventListener("click", () => skill.classList.toggle("open"));
-  skill.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
+const skillsTerm = document.querySelector(".skills-term");
+if (skillsTerm) {
+  const screen = skillsTerm.closest(".crt-screen");
+  const skillsBtn = document.querySelector('.term-btn[aria-controls="skills"]');
+  const fileBtns = Array.from(skillsTerm.querySelectorAll(".pane-list button"));
+  const files = Array.from(skillsTerm.querySelectorAll(".skill-file"));
+
+  function selectSkill(index) {
+    fileBtns.forEach((btn, i) => btn.setAttribute("aria-pressed", i === index));
+    files.forEach((file) => { file.hidden = file.dataset.skill !== fileBtns[index].dataset.skill; });
+  }
+
+  function setOpen(open) {
+    skillsTerm.hidden = !open;
+    screen.classList.toggle("show-skills", open);
+    skillsBtn.setAttribute("aria-expanded", open);
+    if (open) {
+      screen.classList.add("booted");
+      fileBtns[0].focus({ preventScroll: true });
+    }
+    // the screen changes height, so bring its top back into view
+    // (clear of the sticky header) if we've scrolled past it
+    const top = screen.getBoundingClientRect().top - 90;
+    if (top < 0) window.scrollBy({ top, behavior: "smooth" });
+  }
+
+  // closed until asked for (without JS it simply shows everything)
+  selectSkill(0);
+  skillsTerm.hidden = true;
+
+  skillsBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    setOpen(skillsTerm.hidden);
+  });
+
+  fileBtns.forEach((btn, i) => btn.addEventListener("click", () => selectSkill(i)));
+
+  skillsTerm.addEventListener("keydown", (e) => {
+    const current = fileBtns.indexOf(document.activeElement);
+    if (e.key === "Escape") {
+      setOpen(false);
+      skillsBtn.focus({ preventScroll: true });
+    } else if (current !== -1 && (e.key === "ArrowDown" || e.key === "ArrowUp")) {
       e.preventDefault();
-      skill.classList.toggle("open");
+      const next = (current + (e.key === "ArrowDown" ? 1 : -1) + fileBtns.length) % fileBtns.length;
+      fileBtns[next].focus();
+      selectSkill(next);
     }
   });
-});
+
+  skillsTerm.querySelector(".skills-exit").addEventListener("click", () => {
+    setOpen(false);
+    skillsBtn.focus({ preventScroll: true });
+  });
+
+  // the nav's Skills link (and arriving from another page via
+  // index.html#skills) opens the skills on the screen
+  function openFromLink() {
+    setOpen(true);
+    const top = screen.getBoundingClientRect().top - 90;
+    window.scrollBy({ top, behavior: "smooth" });
+  }
+
+  document.querySelectorAll('.nav-menu a[href$="#skills"]').forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      navMenu.classList.remove("open");
+      history.replaceState(null, "", "#skills");
+      openFromLink();
+    });
+  });
+
+  if (location.hash === "#skills") openFromLink();
+}
 
 // ------------------------------------------------------------
 // Gallery carousel: arrows, dots and swipe.

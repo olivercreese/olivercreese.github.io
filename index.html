@@ -29,6 +29,7 @@
             <li><a href="projects/echoes-of-salvation.html">Echoes Of Salvation</a></li>
           </ul>
         </li>
+        <li><a href="index.html#skills">Skills</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -79,8 +80,96 @@
               </p>
               <p class="prompt boot-line" style="--i:9" aria-hidden="true">C:\OLIVER&gt; run portfolio.exe <span class="cursor"></span></p>
               <div class="hero-actions boot-line" style="--i:10">
+                <a class="term-btn primary" href="#skills" aria-controls="skills" aria-expanded="false">Skills</a>
                 <a class="term-btn" href="#projects">View my work</a>
                 <a class="term-btn" href="#contact">Get in touch</a>
+              </div>
+              <!-- Skills: a file manager that "runs" on the screen when the Skills
+                   button is pressed. To add a skill, add a button to the list and a
+                   matching .skill-file (same data-skill name) to the view. -->
+              <div class="skills-term" id="skills">
+                <p class="prompt" style="--j:0"><span class="dim">C:\OLIVER&gt;</span> cd skills</p>
+                <div class="panes" style="--j:1">
+                  <div class="pane-list">
+                    <p class="pane-title">C:\OLIVER\SKILLS</p>
+                    <ul>
+                      <li><button type="button" data-skill="unreal" aria-controls="skill-view"><span>UNREAL</span><span class="ext">EXE</span></button></li>
+                      <li><button type="button" data-skill="unity" aria-controls="skill-view"><span>UNITY</span><span class="ext">EXE</span></button></li>
+                      <li><button type="button" data-skill="cpp" aria-controls="skill-view"><span>CPP</span><span class="ext">SYS</span></button></li>
+                      <li><button type="button" data-skill="opengl" aria-controls="skill-view"><span>OPENGL</span><span class="ext">DLL</span></button></li>
+                      <li><button type="button" data-skill="maya" aria-controls="skill-view"><span>MAYA</span><span class="ext">EXE</span></button></li>
+                      <li><button type="button" data-skill="git" aria-controls="skill-view"><span>GIT</span><span class="ext">BAT</span></button></li>
+                    </ul>
+                  </div>
+                  <div class="pane-view" id="skill-view" aria-live="polite">
+                    <div class="skill-file" data-skill="unreal">
+                      <p class="cmd" aria-hidden="true">&gt; type UNREAL.EXE</p>
+                      <h3>Unreal Engine 5</h3>
+                      <p class="type">ENGINE</p>
+                      <ul>
+                        <li>Combat &amp; upgrade systems with input-based targeting</li>
+                        <li>Procedural terrain using mesh chunking</li>
+                        <li>Anim Blueprints &amp; procedural weapon recoil</li>
+                        <li>Decoupled code: delegates, interfaces, inheritance</li>
+                      </ul>
+                    </div>
+                    <div class="skill-file" data-skill="unity">
+                      <p class="cmd" aria-hidden="true">&gt; type UNITY.EXE</p>
+                      <h3>Unity &amp; C#</h3>
+                      <p class="type">ENGINE</p>
+                      <ul>
+                        <li>Game jam winner, published on Steam</li>
+                        <li>Multiplayer with Netcode for GameObjects</li>
+                        <li>Replicated active ragdoll physics</li>
+                        <li>NavMesh AI driven by state machines</li>
+                      </ul>
+                    </div>
+                    <div class="skill-file" data-skill="cpp">
+                      <p class="cmd" aria-hidden="true">&gt; type CPP.SYS</p>
+                      <h3>C++ &amp; OOP</h3>
+                      <p class="type">LANGUAGE</p>
+                      <ul>
+                        <li>Gameplay systems in Unreal C++</li>
+                        <li>2D &amp; 3D games in low-level in-house engines</li>
+                        <li>Physics, pathfinding &amp; animation from scratch</li>
+                        <li>Smart pointers &amp; multithreaded chunk loading</li>
+                      </ul>
+                    </div>
+                    <div class="skill-file" data-skill="opengl">
+                      <p class="cmd" aria-hidden="true">&gt; type OPENGL.DLL</p>
+                      <h3>OpenGL</h3>
+                      <p class="type">GRAPHICS</p>
+                      <ul>
+                        <li>Custom shaders &amp; the graphics pipeline</li>
+                        <li>Heightmap terrain tessellation</li>
+                        <li>Shadow mapping, water &amp; reflections</li>
+                        <li>Particle-based layered clouds</li>
+                      </ul>
+                    </div>
+                    <div class="skill-file" data-skill="maya">
+                      <p class="cmd" aria-hidden="true">&gt; type MAYA.EXE</p>
+                      <h3>Autodesk Maya</h3>
+                      <p class="type">3D ART</p>
+                      <ul>
+                        <li>Game-ready modelling &amp; UV unwrapping</li>
+                        <li>Basic rigging</li>
+                        <li>Exporting animation to Unreal &amp; Unity</li>
+                      </ul>
+                    </div>
+                    <div class="skill-file" data-skill="git">
+                      <p class="cmd" aria-hidden="true">&gt; type GIT.BAT</p>
+                      <h3>Git</h3>
+                      <p class="type">TOOLS</p>
+                      <ul>
+                        <li>Version control on every project</li>
+                        <li>Branching workflows in team projects</li>
+                        <li>Repositories hosted on GitHub</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <p class="pane-keys" style="--j:2"><span><b>&uarr;&darr;</b> select</span><span><b>Esc</b> back</span><span>6 file(s)</span></p>
+                <button type="button" class="term-btn skills-exit" style="--j:3">Back</button>
               </div>
             </div>
             <div class="crt-bezel">
@@ -224,115 +313,6 @@
             </div>
           </a>
 
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ Skills ============ -->
-    <section id="skills">
-      <div class="container">
-        <h2 class="section-title">Skills</h2>
-        <p class="section-intro">The engines, languages and tools I work with — hover or tap a card for the details.</p>
-
-        <div class="skills-grid">
-          <div class="skill" tabindex="0">
-            <div class="skill-logo"><img src="assets/images/unreal-logo.png" alt="Unreal Engine logo" /></div>
-            <span>Unreal Engine</span>
-            <p class="skill-detail">
-              I have extensive experience developing in <strong>Unreal Engine 5</strong>
-              across <strong>C++ and Blueprint</strong>, working on projects spanning
-              open-world RPGs, first-person shooters, and racing simulations. My most
-              recent work includes <strong>combat systems</strong> using input-based
-              target selection, weapon and resource based upgrade systems, and
-              <strong>procedural generation</strong> via the Procedural Mesh Component
-              and a chunking system. I have solid experience with
-              <strong>animation programming</strong> through Anim Blueprints and
-              procedural techniques for weapon recoil. My broader focus is on
-              <strong>scalable architecture</strong> — using delegates, Blueprint
-              Interfaces, and proper class inheritance hierarchies to keep systems
-              decoupled, maintainable, and easy to iterate on.
-            </p>
-          </div>
-          <div class="skill" tabindex="0">
-            <div class="skill-logo"><img src="assets/images/unity-logo.png" alt="Unity logo" /></div>
-            <span>Unity &amp; C#</span>
-            <p class="skill-detail">
-              I have experience developing in <strong>Unity</strong> across a range
-              of genres including party games, survival horror, and 2D arcade games
-              — one of which <strong>won a game jam and is published on
-              Steam</strong>. My work includes <strong>multiplayer
-              implementation</strong> using Netcode for GameObjects and Unity
-              Sessions, managing lobby state and scene transitions across a
-              replicated multiplayer environment. I have implemented a
-              <strong>replicated active ragdoll system</strong> driven by
-              ConfigurableJoints with a separate hidden mesh for animation blending
-              and physics-based player interactions. I have also built
-              <strong>custom AI systems</strong> using NavMesh with state machines
-              managing multiple behavioural states, including systems where AI
-              behaviour and presentation change dynamically at runtime based on game
-              state.
-            </p>
-          </div>
-          <div class="skill" tabindex="0">
-            <div class="skill-logo"><img src="assets/images/cpp-logo.png" alt="C++ logo" /></div>
-            <span>C++ &amp; OOP</span>
-            <p class="skill-detail">
-              I have extensive experience writing <strong>C++</strong> across
-              multiple environments and abstraction levels. Within
-              <strong>Unreal Engine 5</strong> I work regularly in C++ for building
-              complex gameplay systems that lie beyond the capabilities of
-              Blueprints, with marginal performance gains and the benefit of
-              <strong>manual memory management</strong>. I have also worked with
-              <strong>low-level in-house engines</strong> at my university, building
-              games from scratch in both 2D and 3D contexts — including
-              <strong>physics implementations</strong> such as Hooke's law for
-              surface simulation, enemy pathfinding, animation systems, and weapon
-              systems with upgrade pipelines, all without the abstractions of a
-              commercial engine. Alongside practical experience I have been studying
-              <strong>modern C++</strong> in depth, including memory management,
-              <strong>smart pointers, and parallelisation</strong> — with a focus on
-              real-world use cases such as <strong>multithreaded chunk
-              loading</strong> for large-scale procedural environments.
-            </p>
-          </div>
-          <div class="skill" tabindex="0">
-            <div class="skill-logo"><img src="assets/images/opengl-logo.webp" alt="OpenGL logo" /></div>
-            <span>OpenGL API</span>
-            <p class="skill-detail">
-              I have experience building rendered scenes in <strong>OpenGL</strong>,
-              working directly with the <strong>graphics pipeline</strong> and
-              writing <strong>custom shaders</strong>. My work covers techniques
-              including heightmap-based <strong>terrain tessellation</strong>,
-              <strong>shadow mapping</strong>, light attenuation,
-              <strong>water rendering</strong> and reflective materials. I have also
-              implemented creative solutions such as simulating clouds using a
-              particle system with layered opacity and alpha blending.
-            </p>
-          </div>
-          <div class="skill" tabindex="0">
-            <div class="skill-logo"><img src="assets/images/maya-logo.png" alt="Autodesk Maya logo" /></div>
-            <span>Autodesk Maya</span>
-            <!-- TODO: this skill had no popup on the Wix site, so this text is a
-                 placeholder — rewrite it in your own words -->
-            <p class="skill-detail">
-              I use <strong>Autodesk Maya</strong> for creating and preparing
-              game-ready 3D assets — <strong>modelling, UV unwrapping</strong> and
-              basic <strong>rigging</strong> — and for getting animations ready to
-              import into Unreal Engine and Unity.
-            </p>
-          </div>
-          <div class="skill" tabindex="0">
-            <div class="skill-logo"><img class="invert" src="assets/images/git-logo.png" alt="Git logo" /></div>
-            <span>Git Version Control</span>
-            <!-- TODO: this skill had no popup on the Wix site, so this text is a
-                 placeholder — rewrite it in your own words -->
-            <p class="skill-detail">
-              I use <strong>Git</strong> for version control across all of my
-              projects, working with <strong>branching workflows</strong> when
-              collaborating with teammates and hosting my repositories on
-              <strong>GitHub</strong>.
-            </p>
-          </div>
         </div>
       </div>
     </section>

@@ -341,8 +341,10 @@ section { padding: 4.5rem 0; }
   font-family: var(--font-body);
   font-size: clamp(0.78rem, 2cqi, 0.95rem);
   color: var(--phosphor);
+  background: none;
   border: 1px solid var(--phosphor-dim);
   padding: 0.45rem 0.9rem;
+  cursor: pointer;
 }
 .term-btn::before { content: "> "; }
 .term-btn:hover,
@@ -352,6 +354,117 @@ section { padding: 4.5rem 0; }
   text-shadow: none;
   text-decoration: none;
   outline: none;
+}
+
+/* the Skills button is the one to press: lit up and gently pulsing */
+.term-btn.primary {
+  background: var(--phosphor);
+  color: #06100a;
+  border-color: var(--phosphor);
+  font-weight: 700;
+  text-shadow: none;
+  box-shadow: 0 0 14px rgba(111, 207, 148, 0.45);
+  animation: btn-pulse 2.4s ease-in-out infinite;
+}
+.term-btn.primary:hover,
+.term-btn.primary:focus-visible,
+.term-btn.primary[aria-expanded="true"] {
+  background: #a6e8bf;
+  border-color: #a6e8bf;
+  animation: none;
+}
+
+@keyframes btn-pulse {
+  50% { box-shadow: 0 0 22px rgba(111, 207, 148, 0.75); }
+}
+
+/* ---- Skills: a DOS-style file manager that runs on the screen ---- */
+.skills-term { font-size: clamp(0.74rem, 1.9cqi, 0.9rem); }
+.skills-term[hidden] { display: none; }
+.skills-term .term-btn { margin-top: 1rem; }
+
+/* while the skills are open the screen is cleared down to the logo */
+.crt-screen.show-skills > :not(.ascii-logo):not(.skills-term) { display: none; }
+/* once booted, lines that come back after the skills close shouldn't replay the boot */
+.crt-screen.booted .boot-line { animation: none; opacity: 1; }
+/* each part appears in turn when the Skills button runs it */
+.skills-term > * {
+  opacity: 0;
+  animation: boot-in 0.01s linear forwards;
+  animation-delay: calc(var(--j) * 0.18s);
+}
+.skills-term .dim { color: var(--phosphor-dim); }
+.skills-term .prompt { margin-bottom: 0.6rem; font-size: inherit; }
+
+.panes {
+  display: grid;
+  grid-template-columns: minmax(150px, 30%) 1fr;
+  border: 3px double var(--phosphor-dim);
+  min-height: 15.5em;
+}
+.pane-title {
+  text-align: center;
+  font-size: 0.85em;
+  letter-spacing: 0.2em;
+  color: var(--phosphor-dim);
+  border-bottom: 1px solid var(--phosphor-dim);
+  padding: 0.3rem;
+}
+.pane-list { border-right: 3px double var(--phosphor-dim); }
+.pane-list ul { list-style: none; padding: 0.4rem 0; }
+.pane-list button {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.2rem 0.8rem;
+  cursor: pointer;
+}
+.pane-list button:hover,
+.pane-list button:focus-visible { background: rgba(111, 207, 148, 0.12); }
+.pane-list .ext { color: var(--phosphor-dim); }
+.pane-list button[aria-pressed="true"] {
+  background: var(--phosphor);
+  color: #06100a;
+  text-shadow: none;
+}
+.pane-list button[aria-pressed="true"] .ext { color: #06100a; }
+
+.pane-view { padding: 0.8rem 1.1rem; }
+.skill-file .cmd { color: var(--phosphor-dim); margin-bottom: 0.6rem; }
+.skill-file h3 { font-size: 1.15em; color: #a6e8bf; }
+.skill-file .type { color: var(--phosphor-dim); font-size: 0.8em; letter-spacing: 0.2em; margin-bottom: 0.6rem; }
+.skill-file ul { list-style: none; }
+.skill-file li { margin-bottom: 0.2rem; }
+.skill-file li::before { content: "> "; color: var(--phosphor-dim); }
+
+.pane-keys {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  padding-top: 0.4rem;
+  font-size: 0.85em;
+  color: var(--phosphor-dim);
+}
+.pane-keys b {
+  background: var(--phosphor-dim);
+  color: #06100a;
+  padding: 0 0.3rem;
+  font-weight: 400;
+  text-shadow: none;
+}
+.pane-keys button {
+  all: unset;
+  cursor: pointer;
+}
+.pane-keys button:hover,
+.pane-keys button:focus-visible { color: var(--phosphor); }
+
+@container (max-width: 560px) {
+  .panes { grid-template-columns: 1fr; }
+  .pane-list { border-right: none; border-bottom: 3px double var(--phosphor-dim); }
+  .pane-list ul { display: grid; grid-template-columns: 1fr 1fr; }
 }
 
 /* bottom bezel: badge + power light */
@@ -428,7 +541,8 @@ section { padding: 4.5rem 0; }
 @keyframes blink { 50% { opacity: 0; } }
 
 @media (prefers-reduced-motion: reduce) {
-  .crt-screen, .boot-line { animation: none; opacity: 1; }
+  .crt-screen, .boot-line, .skills-term > * { animation: none; opacity: 1; }
+  .term-btn.primary { animation: none; }
   .prompt .cursor { animation: none; }
 }
 
@@ -606,129 +720,6 @@ section { padding: 4.5rem 0; }
 }
 
 .card-link { font-weight: 600; font-size: 0.95rem; }
-
-/* ============================================================
-   Skills (homepage)
-   ============================================================ */
-/* one flexible row: the open card balloons in both directions and
-   the others get squeezed sideways to make room */
-.skills-grid {
-  display: flex;
-  align-items: flex-start; /* closed cards keep their size while one balloons */
-  gap: 1.2rem;
-}
-
-.skill {
-  flex: 1 1 0;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.4rem 1rem;
-  text-align: center;
-  cursor: pointer;
-  /* the springy curve gives the growth a balloon-like bounce */
-  transition: flex-grow 0.5s cubic-bezier(0.34, 1.3, 0.64, 1),
-              flex-basis 0.5s ease, padding 0.4s ease,
-              border-color 0.2s ease, box-shadow 0.35s ease;
-}
-
-.skill > span {
-  display: block;
-  max-height: 3.5em;
-  transition: opacity 0.25s ease, max-height 0.35s ease, margin 0.35s ease;
-}
-
-.skill .skill-logo { transition: width 0.4s ease, height 0.4s ease, margin 0.4s ease; }
-
-/* hidden detail text, revealed when the card balloons open */
-.skill .skill-detail {
-  width: 100%;
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  margin-top: 0;
-  text-align: left;
-  font-size: 1.275rem;  /* 75% of the previous 1.7rem */
-  line-height: 1.5;
-  color: var(--muted);
-  transition: max-height 0.45s ease, opacity 0.3s ease, margin-top 0.3s ease;
-}
-
-/* key terms stand out in white against the grey body text */
-.skill .skill-detail strong {
-  color: var(--text);
-  font-weight: 600;
-}
-
-.skill:hover,
-.skill:focus-visible,
-.skill.open {
-  flex-grow: 12;
-  border-color: var(--accent);
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
-}
-
-/* while one card is open, the others squeeze into icon-only chips
-   so the open one can take almost the whole row */
-@media (min-width: 821px) {
-  .skills-grid:has(.skill:hover, .skill.open, .skill:focus-visible)
-    .skill:not(:hover):not(.open):not(:focus-visible) {
-    flex: 0 0 76px;
-    padding: 1rem 0.5rem;
-  }
-
-  .skills-grid:has(.skill:hover, .skill.open, .skill:focus-visible)
-    .skill:not(:hover):not(.open):not(:focus-visible) .skill-logo {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 0;
-  }
-
-  .skills-grid:has(.skill:hover, .skill.open, .skill:focus-visible)
-    .skill:not(:hover):not(.open):not(:focus-visible) img {
-    max-width: 32px;
-    max-height: 32px;
-  }
-
-  .skills-grid:has(.skill:hover, .skill.open, .skill:focus-visible)
-    .skill:not(:hover):not(.open):not(:focus-visible) > span {
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    margin: 0;
-  }
-}
-
-.skill:hover .skill-detail,
-.skill:focus-visible .skill-detail,
-.skill.open .skill-detail {
-  max-height: 2200px;
-  opacity: 1;
-  margin-top: 0.8rem;
-}
-
-.skill .skill-logo {
-  background: #faf6f2;
-  border-radius: 10px;
-  width: 76px;
-  height: 76px;
-  margin: 0 auto 0.9rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.skill img { max-width: 52px; max-height: 52px; object-fit: contain; }
-
-/* the Git logo file is white, flip it to dark so it shows on the light chip */
-.skill img.invert { filter: invert(1); }
-
-.skill span { font-weight: 600; font-size: 0.92rem; }
 
 /* ============================================================
    Contact (homepage)
@@ -1191,7 +1182,4 @@ section { padding: 4.5rem 0; }
   .hero { padding: 4.5rem 0; }
   section { padding: 3rem 0; }
 
-  /* phones: skills stack vertically and expand downwards instead */
-  .skills-grid { flex-direction: column; }
-  .skill { flex: none; }
 }
